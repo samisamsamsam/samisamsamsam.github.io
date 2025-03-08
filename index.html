@@ -14,6 +14,30 @@
 
 <script type="text/javascript">
 
+var currentURL = window.location.href;
+
+
+	if (currentURL === "https://samisamsamsam.github.io"){
+	$("#StartGame").show();
+	}
+	else{
+	$("#StartGame").hide();
+	}
+
+
+
+function myCallBack(){
+
+// get the url
+var url = window.location.href;
+//getting the access token from url 
+var access_token = url.split("#")[1].split("=")[1].split("&")[0]; 
+// get the userid 
+var userId = url.split("#")[1].split("=")[2].split("&")[0]; 
+console.log(access_token); 
+console.log(userId);
+
+}
 
 
 </script>
@@ -22,9 +46,9 @@
 
 
 <body>
+<br><br><br><br><br><br>
 
-
-<div>
+<div id="StartGame">
 <div class="row">
  	 <div class="col-sm-4"></div>
      <div class="col-sm-4">
@@ -37,7 +61,7 @@
 	 </div>
 	 <div class="col-sm-4"></div>
 </div>                    
- 
+
  
 </div>
 
