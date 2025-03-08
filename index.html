@@ -14,17 +14,17 @@
 
 <script type="text/javascript">
 
-var currentURL = window.location.href;
 
 
-	if (currentURL === "https://samisamsamsam.github.io"){
-	$("#StartGame").show();
-	}
-	else{
-	$("#StartGame").hide();
-	}
+function whichDisplay(){
+//window.alert("sometext");
+const currentURL = window.location.href;
+const divElement = document.getElementById("StartGame");
+//divElement.style.display = "block";
 
+divElement.style.display = "none";
 
+}
 
 function myCallBack(){
 
@@ -34,10 +34,12 @@ var url = window.location.href;
 var access_token = url.split("#")[1].split("=")[1].split("&")[0]; 
 // get the userid 
 var userId = url.split("#")[1].split("=")[2].split("&")[0]; 
-console.log(access_token); 
-console.log(userId);
+
+
+//window.alert(userId);
 
 }
+
 
 
 </script>
@@ -45,7 +47,7 @@ console.log(userId);
 </head>
 
 
-<body>
+<body onload ="whichDisplay()">
 <br><br><br><br><br><br>
 
 <div id="StartGame">
