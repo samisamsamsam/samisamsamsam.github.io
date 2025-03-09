@@ -15,31 +15,71 @@
 <script type="text/javascript">
 
 
-
 function whichDisplay(){
-//window.alert("sometext");
-const currentURL = window.location.href;
-const divElement = document.getElementById("StartGame");
-//divElement.style.display = "block";
+	//window.alert("sometext");
+	
+	const divElementOne = document.getElementById("StartGame");
+	const divElementTwo = document.getElementById("AuthContPage");
+	
+	divElementOne.style.display = "block";
+	divElementTwo.style.display = "none";
 
-divElement.style.display = "none";
 
 }
+
+function authFitBit(){
+	const originalURL = this.href;
+	const authURL = "https://www.fitbit.com/oauth2/authorize?response_type=code&client_id=23Q4C5&scope=activity+cardio_fitness+electrocardiogram+heartrate+irregular_rhythm_notifications+location+nutrition+oxygen_saturation+profile+respiratory_rate+settings+sleep+social+temperature+weight&code_challenge=TYTQ6GEfJ59fixjpMcc_XnqwgyV-XgeDvdQWp84kNhA&code_challenge_method=S256&redirect_uri=https%3A%2F%2Fsamisamsamsam.github.io";
+	window.location.href = authURL;
+	
+//	userComeBack(originalURL, authURL);
+	
+}
+
+//function userComeBack(firstURL, secondURL){
+	
+	//const checkRedirect = setInterval(function() {
+
+   // if ((window.location.href !== firstURL) && (window.location.href !== secondURL) {
+	//	window.alert("sometext");
+
+  //    const redirectURL = window.location.href; // Get redirect URL
+		
+	//	myCallBack(redirectURL);
+      // Perform actions using the redirectUrl
+
+     // clearInterval(checkRedirect); // Stop checking
+
+   // }
+
+ // }, 100); // Check every 100 milliseconds
+
+	//}
+	
+
+
+//}
+
 
 function myCallBack(){
+	var url = window.location.href;
+	window.alert(url);
+	const divElementOne = document.getElementById("StartGame");
+	const divElementTwo = document.getElementById("AuthContPage");
+	
+	divElementOne.style.display = "none";
+	divElementTwo.style.display = "block";
+	
+	// get the url
+	var url = window.location.href;
+	//getting the access token from url 
+	var access_token = url.split("#")[1].split("=")[1].split("&")[0]; 
+	// get the userid 
+	var userId = url.split("#")[1].split("=")[2].split("&")[0]; 
 
-// get the url
-var url = window.location.href;
-//getting the access token from url 
-var access_token = url.split("#")[1].split("=")[1].split("&")[0]; 
-// get the userid 
-var userId = url.split("#")[1].split("=")[2].split("&")[0]; 
-
-
-//window.alert(userId);
+	window.alert(userId);
 
 }
-
 
 
 </script>
@@ -56,7 +96,7 @@ var userId = url.split("#")[1].split("=")[2].split("&")[0];
      <div class="col-sm-4">
          <div style="text-align:center;">
 		
-		 <button type="button" class="btn btn-success form-control" onclick="window.location.href='https://www.fitbit.com/oauth2/authorize?response_type=code&client_id=23Q4C5&scope=activity+cardio_fitness+electrocardiogram+heartrate+irregular_rhythm_notifications+location+nutrition+oxygen_saturation+profile+respiratory_rate+settings+sleep+social+temperature+weight&code_challenge=TYTQ6GEfJ59fixjpMcc_XnqwgyV-XgeDvdQWp84kNhA&code_challenge_method=S256&redirect_uri=https%3A%2F%2Fsamisamsamsam.github.io';">
+		 <button type="button" class="btn btn-success form-control" onclick="authFitBit();">
 		 Log In
 		</button>
          </div>
@@ -65,6 +105,14 @@ var userId = url.split("#")[1].split("=")[2].split("&")[0];
 </div>                    
 
  
+</div>
+<!-- Second page after user gives authorization for fitbit access
+	-->
+<div id="AuthContPage">
+
+
+<div>hello second page</div>
+
 </div>
 
 
