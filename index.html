@@ -16,6 +16,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
 
 <script type="text/javascript">
 
@@ -45,24 +46,40 @@ function detectBrowser() {
   return browser;
 }
 
+function generateCodeVerifier(){
 
+        const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~';
+        let verifier = '';
+        for (let i = 0; i < 128; i++) {
+            verifier += possible.charAt(Math.floor(Math.random() * possible.length));
+        }
+        return verifier;
+		
+
+}
+
+    function generateCodeChallenge(code_verifier) {
+      return code_challenge = base64URL(CryptoJS.SHA256(code_verifier))
+    }
+	
+    function base64URL(string) {
+      return string.toString(CryptoJS.enc.Base64).replace(/=/g, '').replace(/\+/g, '-').replace(/\//g, '_')
+    }
 
 //function using the Fitbit Web API authorization process
 function authFitBit(){
+    const codeVerifier = generateCodeVerifier();
 
+	const codeChallenge = generateCodeChallenge(codeVerifier);
 	const originURL = window.location.href;
 	
-	const authURL = "https://www.fitbit.com/oauth2/authorize?response_type=code&client_id=23Q4C5&scope=activity+cardio_fitness+electrocardiogram+heartrate+irregular_rhythm_notifications+location+nutrition+oxygen_saturation+profile+respiratory_rate+settings+sleep+social+temperature+weight&code_challenge=TYTQ6GEfJ59fixjpMcc_XnqwgyV-XgeDvdQWp84kNhA&code_challenge_method=S256&redirect_uri=https%3A%2F%2Fsamisamsamsam.github.io";
+//	const authURL = "https://www.fitbit.com/oauth2/authorize?response_type=code&client_id=23Q4C5&scope=activity+cardio_fitness+electrocardiogram+heartrate+irregular_rhythm_notifications+location+nutrition+oxygen_saturation+profile+respiratory_rate+settings+sleep+social+temperature+weight&code_challenge=TYTQ6GEfJ59fixjpMcc_XnqwgyV-XgeDvdQWp84kNhA&code_challenge_method=S256&redirect_uri=https%3A%2F%2Fsamisamsamsam.github.io";
 	
+	const authURL = "https://www.fitbit.com/oauth2/authorize?client_id=23Q4C5&response_type=code&code_challenge="+codeChallenge+"&code_challenge_method=S256&scope=activity%20heartrate%20location%20nutrition%20oxygen_saturation%20profile%20respiratory_rate%20settings%20sleep%20social%20temperature%20weight";
+	
+//	const authURL = "https://www.fitbit.com/oauth2/authorize?response_type=code&client_id=23Q4C5&scope=activity+cardio_fitness+electrocardiogram+heartrate+irregular_rhythm_notifications+location+nutrition+oxygen_saturation+profile+respiratory_rate+settings+sleep+social+temperature+weight&code_challenge="+codeChallenge+"&code_challenge_method=S256&redirect_uri=https%3A%2F%2Fsamisamsamsam.github.io";
 	
 	window.location.href = authURL; // send user to authorization webpage for fitbit watch
-
-
-
-
-
-
-
 
 }
 
@@ -75,11 +92,11 @@ function readAuthUrl(){
 		const startIndex = url.indexOf("code=");
 		const endIndex = url.indexOf("#_=_");
 		const authClientID = url.substring(startIndex + 5, endIndex);
-		const divElementOne = document.getElementById("StartGame"); // page user sees first
+		const divElementOne = document.getElementById("StartGame"); 
 		const divElementTwo = document.getElementById("AuthContPage"); 
-	
-		divElementOne.style.display = "none"; // first page
-		divElementTwo.style.display = "block"; //  second page
+		alert(codeChallenge);
+		divElementOne.style.display = "none"; // hide first page
+		divElementTwo.style.display = "block"; // show second page
 
 		alert(authClientID);
 	}
@@ -200,15 +217,11 @@ async function connectToBluetoothDevice(){
      <div class="col-sm-4">
          <div style="text-align:center;">
 		
-			
+
 			
          </div>
 		 
-				
-	</div>	
-			
-		 
-	 
+	 </div>	
 	 <div class="col-sm-4"></div>
 	 
 	
