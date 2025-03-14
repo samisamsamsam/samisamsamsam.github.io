@@ -2,6 +2,11 @@
 <html>
 
 <head>
+
+
+
+
+
 <script type="text/javascript" src="jquery-1.8.3.js"></script>
 
 <title>Reel Run</title>
@@ -15,25 +20,81 @@
 <script type="text/javascript">
 
 
-function whichDisplay(){
-	//window.alert("sometext");
-	
-	const divElementOne = document.getElementById("StartGame"); // page user sees first
-	const divElementTwo = document.getElementById("AuthContPage"); // the page the user should see second 
-	
-	divElementOne.style.display = "block"; // show first page
-	divElementTwo.style.display = "none"; // hide second page
+//right now, bluetooth device request cannot connect to the fitbit watch
+function detectBrowser() {
 
+  const userAgent = navigator.userAgent;
+  let browser = "Unknown";
+	
+  if (userAgent.indexOf("Chrome") > -1) {
+    browser = "Chrome";
+	//connectToBluetoothDevice();
+  } else if (userAgent.indexOf("Firefox") > -1) {
+    browser = "Firefox";
+	authFitBit();
+  } else if (userAgent.indexOf("Safari") > -1) {
+    browser = "Safari";
+  } else if (userAgent.indexOf("Edge") > -1) {
+    browser = "Edge";
+  } else if (userAgent.indexOf("Opera") > -1 || userAgent.indexOf("OPR") > -1) {
+    browser = "Opera";
+  } else if (userAgent.indexOf("MSIE") > -1 || userAgent.indexOf("Trident/") > -1) {
+    browser = "Internet Explorer";
+  }
 
+  return browser;
 }
+
+
+
 //function using the Fitbit Web API authorization process
 function authFitBit(){
-	const originalURL = this.href;
-	const authURL = "https://www.fitbit.com/oauth2/authorize?response_type=code&client_id=23Q4C5&scope=activity+cardio_fitness+electrocardiogram+heartrate+irregular_rhythm_notifications+location+nutrition+oxygen_saturation+profile+respiratory_rate+settings+sleep+social+temperature+weight&code_challenge=TYTQ6GEfJ59fixjpMcc_XnqwgyV-XgeDvdQWp84kNhA&code_challenge_method=S256&redirect_uri=https%3A%2F%2Fsamisamsamsam.github.io";
-	window.alert(authURL);
-	window.location.href = authURL; // send user to authorization webpage for fitbit watch
+
+	const originURL = window.location.href;
 	
+	const authURL = "https://www.fitbit.com/oauth2/authorize?response_type=code&client_id=23Q4C5&scope=activity+cardio_fitness+electrocardiogram+heartrate+irregular_rhythm_notifications+location+nutrition+oxygen_saturation+profile+respiratory_rate+settings+sleep+social+temperature+weight&code_challenge=TYTQ6GEfJ59fixjpMcc_XnqwgyV-XgeDvdQWp84kNhA&code_challenge_method=S256&redirect_uri=https%3A%2F%2Fsamisamsamsam.github.io";
+	
+	
+	window.location.href = authURL; // send user to authorization webpage for fitbit watch
+
+
+
+
+
+
+
+
 }
+
+
+function readAuthUrl(){
+	const url = window.location.href;
+
+	if (window.location.href.indexOf("code=") != -1) { //found it
+
+		const startIndex = url.indexOf("code=");
+		const endIndex = url.indexOf("#_=_");
+		const authClientID = url.substring(startIndex + 5, endIndex);
+		const divElementOne = document.getElementById("StartGame"); // page user sees first
+		const divElementTwo = document.getElementById("AuthContPage"); 
+	
+		divElementOne.style.display = "none"; // first page
+		divElementTwo.style.display = "block"; //  second page
+
+		alert(authClientID);
+	}
+	else{
+		
+	authFitBit();
+		
+	}
+
+}
+
+
+
+
+
 
 async function connectToBluetoothDevice(){
 
@@ -44,6 +105,7 @@ async function connectToBluetoothDevice(){
   }
 
   else {
+  
 
     //in this example, we'll simply allow connecting to any device nearby
 
@@ -51,26 +113,38 @@ async function connectToBluetoothDevice(){
 
     //more on this here: https://developer.mozilla.org/en-US/docs/Web/API/Bluetooth/requestDevice
 
-    let device = await navigator.bluetooth.requestDevice({acceptAllDevices: true});
-	
-	const divElementOne = document.getElementById("StartGame"); // page user sees first
-	const divElementTwo = document.getElementById("AuthContPage"); // the page the user should see second 
-	divElementOne.style.display = "none"; // show first page
-	divElementTwo.style.display = "block"; // hide second page
-
-    alert("Successfully connected to "+device.name);
-	
-	device.gatt.connect().then(server => {
-    alert("Connected to GATT server");
-	})
-	.catch(error => {
-    alert("Error connecting to GATT server:", error);
+    let device = await navigator.bluetooth.requestDevice({
+		filters: [{
+		services: ["heart_rate"]}
+		]
 	});
-
+	
+   //alert("here");
+	//discover bluetooth services after connection
+		device.gatt.connect().then(server => {
+			alert("Successfully connected to "+device.name);
+		})
+		.catch(error => {
+		alert("Error connecting", error);
+		});
+		device.gatt.getPrimaryServices()
+		.then(services => {
+			services.forEach(service => {
+				alert("Service UUID:", service.uuid);
+				service.getCharacteristics().then(characteristics => {
+				characteristics.forEach(characteristic => {
+					alert("Characteristic UUID:", characteristic.uuid);
+				});
+			});
+		});
+	})
+				.catch(error => {
+					alert("Error discovering services:", error);
+				});
   }
 
-}
-
+} // end of connectToBluetoothDevice function
+// function connects to device and discovers services and characteristics
 
 
 
@@ -79,7 +153,8 @@ async function connectToBluetoothDevice(){
 </head>
 
 
-<body onload ="whichDisplay()"> <!-- when the page loads, display the start button -->
+<body> 
+<!--onload ="whichDisplay()"-->
 <br><br><br><br><br><br>
 
 <div id="StartGame">
@@ -88,8 +163,8 @@ async function connectToBluetoothDevice(){
      <div class="col-sm-4">
          <div style="text-align:center;">
 		
-		 <button type="button" class="btn btn-success form-control" onclick="connectToBluetoothDevice();">
-		 Log In
+		 <button type="button" class="btn btn-success form-control" onclick="readAuthUrl();">
+		 Start
 		</button>
          </div>
 	 </div>
@@ -98,17 +173,53 @@ async function connectToBluetoothDevice(){
 
  
 </div>
-<!-- Second page after user gives authorization for fitbit access
+<!-- Second page after bluetooth connection
 	-->
-<div id="AuthContPage">
+<div id="AuthContPage" style="display:none">
+<div class="row">
+ 	 <div class="col-sm-4"></div>
+     <div class="col-sm-4">
+         <div style="text-align:center;">
+		
+			
+         </div>
+		 
+				
+		</div>	
+			
+	 
+	 <div class="col-sm-4"></div>
+</div>                    
 
 
-<div>hello second page</div>
+</div>
+
+<div id="AuthError" style="display:none">
+<div class="row">
+ 	 <div class="col-sm-4"></div>
+     <div class="col-sm-4">
+         <div style="text-align:center;">
+		
+			
+			
+         </div>
+		 
+				
+	</div>	
+			
+		 
+	 
+	 <div class="col-sm-4"></div>
+	 
+	
+</div>                    
+
 
 </div>
 
 
-<!-- 
-	-->
+
+ 
+	
 </body>
 </html>
