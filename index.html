@@ -68,10 +68,10 @@ function generateCodeVerifier(){
 
 //function using the Fitbit Web API authorization process
 function authFitBit(){
-    const codeVerifier = generateCodeVerifier();
-
-	var codeChallenge = generateCodeChallenge(codeVerifier);
-	const originURL = window.location.href;
+//    const codeVerifier = generateCodeVerifier(); <----- must use to make it secure
+	const codeVerifier ="TYTQ6GEfJ59fixjpMcc_XnqwgyV-XgeDvdQWp84kNhA"; // temporary solution for saving codeVerifier
+	const codeChallenge = generateCodeChallenge(codeVerifier);
+//	const originURL = window.location.href;
 	
 //	const authURL = "https://www.fitbit.com/oauth2/authorize?response_type=code&client_id=23Q4C5&scope=activity+cardio_fitness+electrocardiogram+heartrate+irregular_rhythm_notifications+location+nutrition+oxygen_saturation+profile+respiratory_rate+settings+sleep+social+temperature+weight&code_challenge=TYTQ6GEfJ59fixjpMcc_XnqwgyV-XgeDvdQWp84kNhA&code_challenge_method=S256&redirect_uri=https%3A%2F%2Fsamisamsamsam.github.io";
 	
@@ -94,6 +94,8 @@ function readAuthUrl(){
 		const authClientID = url.substring(startIndex + 5, endIndex);
 		const divElementOne = document.getElementById("StartGame"); 
 		const divElementTwo = document.getElementById("AuthContPage"); 
+		const codeVerifier ="TYTQ6GEfJ59fixjpMcc_XnqwgyV-XgeDvdQWp84kNhA"; // temporary solution for saving codeVerifier
+		const codeChallenge = generateCodeChallenge(codeVerifier);
 		alert(codeChallenge);
 		divElementOne.style.display = "none"; // hide first page
 		divElementTwo.style.display = "block"; // show second page
