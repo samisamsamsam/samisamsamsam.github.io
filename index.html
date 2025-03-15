@@ -93,10 +93,10 @@ function readAuthUrl(){
 
 		const startIndex = url.indexOf("code=");
 		const endIndex = url.indexOf("#_=_");
-		const authCode = url.substring(startIndex + 5, endIndex);
+		const authCodeURL = url.substring(startIndex + 5, endIndex);
 		const divElementOne = document.getElementById("StartGame"); 
 		const divElementTwo = document.getElementById("AuthContPage"); 
-		const codeVerifier ="TYTQ6GEfJ59fixjpMcc_XnqwgyV-XgeDvdQWp84kNhA"; // temporary solution for saving codeVerifier
+		const cVerifier ="TYTQ6GEfJ59fixjpMcc_XnqwgyV-XgeDvdQWp84kNhA"; // temporary solution for saving codeVerifier
 		const codeChallenge = generateCodeChallenge(codeVerifier);
 		//alert(codeChallenge);
 		divElementOne.style.display = "none"; // hide first page
@@ -104,7 +104,9 @@ function readAuthUrl(){
 
 		const clID = "23Q4C5"; //client ID
 		const clSecret = "504e970943a9428ef0e3e0de71a37ae5"; //cient secret
-	getAccessToken(authCode,codeChallenge,codeVerifier,clID,clSecret);
+		const setHeaderIDSecret = "23Q4C5:504e970943a9428ef0e3e0de71a37ae5";
+		const hAJAX = "Basic " + base64URL(CryptoJS.SHA256(setHeaderIDSecret));
+		getAccessToken(hAJAX,clID,authCodeURL,cVerifier);
 		
 	}
 	else{
@@ -116,9 +118,7 @@ function readAuthUrl(){
 }
 
 
-function getAccessToken(authCodeFromURL,codeChallengeURL,codeVerifierURL,clientID,clientSecret){
-	const setHeaderIDSecret = "23Q4C5:504e970943a9428ef0e3e0de71a37ae5";
-	const headerAJAX = "Basic " + base64URL(CryptoJS.SHA256(setHeaderIDSecret));
+function getAccessToken(headerAJAX,clientID,authCode,codeVerifier){
 	
 	$.ajax({
 	type: 'POST',
@@ -127,9 +127,8 @@ function getAccessToken(authCodeFromURL,codeChallengeURL,codeVerifierURL,clientI
 	headers: { "Authorization": headerAJAX },
 	data: JSON.stringify({grant_type    : "client_credentials",
 	client_id: clientID,
-	code: authCodeFromURL,
-   
-    code_verifier: codeVerifierURL, 
+	code: authCode,
+    code_verifier: codeVerifier, 
     grant_type: "authorization_code"
 }),
     
