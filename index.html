@@ -116,9 +116,10 @@ function readAuthUrl(){
 }
 
 
-function getAccessToken(authCodeFromURL,codeChallengeURL,codeVerifierURL,clientID,ClientSecret){
-	const setHeaderIDSecret = clientID + ":" + ClientSecret;
-	const headerAJAX = base64URL(CryptoJS.SHA256(setHeaderIDSecret));
+function getAccessToken(authCodeFromURL,codeChallengeURL,codeVerifierURL,clientID,clientSecret){
+	//const setHeaderIDSecret = clientID + ":" + clientSecret;
+	const headerAJAX = base64URL(CryptoJS.SHA256(clientID)) + ":" + base64URL(CryptoJS.SHA256(clientSecret));
+	
 	$.ajax({
 	type: 'POST',
 	url: "https://api.fitbit.com/oauth2/token",
