@@ -124,7 +124,7 @@ function getAccessToken(headerAJAX,clientID,authCode,codeVerifier){
 	type: 'POST',
 	url: "https://api.fitbit.com/oauth2/token",
 	crossDomain: true,
-	headers: { "Authorization": headerAJAX },
+	//headers: { "Authorization": headerAJAX },
 	data: JSON.stringify({grant_type    : "client_credentials",
 	client_id: clientID,
 	code: authCode,
@@ -139,7 +139,15 @@ function getAccessToken(headerAJAX,clientID,authCode,codeVerifier){
 error: function (responseData, textStatus, errorThrown) {
 	alert(JSON.stringify(responseData));
     alert('POST failed.');
-}});
+},
+	beforeSend: function(xhr) {
+                   xhr.setRequestHeader("Authorization", "Basic " + btoa(headerAJAX));
+                },
+				
+                type: 'GET',
+                dataType: 'json',
+            
+});
 
 }
 
