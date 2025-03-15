@@ -124,8 +124,9 @@ function getAccessToken(headerAJAX,clientID,authCode,codeVerifier){
 	type: 'POST',
 	url: "https://api.fitbit.com/oauth2/token",
 	crossDomain: true,
+	data: JSON.stringify({
 	headers: { "Authorization": headerAJAX },
-	data: JSON.stringify({grant_type    : "client_credentials",
+	grant_type: "client_credentials",
 	client_id: clientID,
 	code: authCode,
     code_verifier: codeVerifier, 
