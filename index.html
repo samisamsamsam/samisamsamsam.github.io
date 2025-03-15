@@ -74,10 +74,12 @@ function authFitBit(){
 //	const originURL = window.location.href;
 	
 //	const authURL = "https://www.fitbit.com/oauth2/authorize?response_type=code&client_id=23Q4C5&scope=activity+cardio_fitness+electrocardiogram+heartrate+irregular_rhythm_notifications+location+nutrition+oxygen_saturation+profile+respiratory_rate+settings+sleep+social+temperature+weight&code_challenge=TYTQ6GEfJ59fixjpMcc_XnqwgyV-XgeDvdQWp84kNhA&code_challenge_method=S256&redirect_uri=https%3A%2F%2Fsamisamsamsam.github.io";
+
+//const authURL = "https://www.fitbit.com/oauth2/authorize?response_type=code&client_id=23Q4C5&scope=activity+cardio_fitness+electrocardiogram+heartrate+irregular_rhythm_notifications+location+nutrition+oxygen_saturation+profile+respiratory_rate+settings+sleep+social+temperature+weight&redirect_uri=https%3A%2F%2Fsamisamsamsam.github.io";
 	
-	const authURL = "https://www.fitbit.com/oauth2/authorize?client_id=23Q4C5&response_type=code&code_challenge="+codeChallenge+"&code_challenge_method=S256&scope=activity%20heartrate%20location%20nutrition%20oxygen_saturation%20profile%20respiratory_rate%20settings%20sleep%20social%20temperature%20weight";
+//	const authURL = "https://www.fitbit.com/oauth2/authorize?client_id=23Q4C5&response_type=code&code_challenge="+codeChallenge+"&code_challenge_method=S256&scope=activity%20heartrate%20location%20nutrition%20oxygen_saturation%20profile%20respiratory_rate%20settings%20sleep%20social%20temperature%20weight";
 	
-//	const authURL = "https://www.fitbit.com/oauth2/authorize?response_type=code&client_id=23Q4C5&scope=activity+cardio_fitness+electrocardiogram+heartrate+irregular_rhythm_notifications+location+nutrition+oxygen_saturation+profile+respiratory_rate+settings+sleep+social+temperature+weight&code_challenge="+codeChallenge+"&code_challenge_method=S256&redirect_uri=https%3A%2F%2Fsamisamsamsam.github.io";
+	const authURL = "https://www.fitbit.com/oauth2/authorize?response_type=code&client_id=23Q4C5&scope=activity+cardio_fitness+electrocardiogram+heartrate+irregular_rhythm_notifications+location+nutrition+oxygen_saturation+profile+respiratory_rate+settings+sleep+social+temperature+weight&code_challenge="+codeChallenge+"&code_challenge_method=S256&redirect_uri=https%3A%2F%2Fsamisamsamsam.github.io";
 	
 	window.location.href = authURL; // send user to authorization webpage for fitbit watch
 
@@ -255,7 +257,9 @@ async function connectToBluetoothDevice(){
 
 </div>
 
-
+<!--
+readyState":4,"responseText":"{\"errors\":[{\"errorType\":\"invalid_client\",\"message\":\"Invalid authorization header format. The header was not recognized to be a valid header for any of known implementations or a client_id was not specified in case of a public client Received header = null. Visit https://dev.fitbit.com/docs/oauth2 for more information on the Fitbit Web API authorization process.\"}],\"success\":false}","responseJSON":{"errors":[{"errorType":"invalid_client","message":"Invalid authorization header format. The header was not recognized to be a valid header for any of known implementations or a client_id was not specified in case of a public client Received header = null. Visit https://dev.fitbit.com/docs/oauth2 for more information on the Fitbit Web API authorization process."}],"success":false},"status":401,"statusText":"error"}
+-->
 
  
 	
