@@ -97,7 +97,7 @@ function readAuthUrl(){
 		const divElementOne = document.getElementById("StartGame"); 
 		const divElementTwo = document.getElementById("AuthContPage"); 
 		const cVerifier ="TYTQ6GEfJ59fixjpMcc_XnqwgyV-XgeDvdQWp84kNhA"; // temporary solution for saving codeVerifier
-		const codeChallenge = generateCodeChallenge(codeVerifier);
+		const codeChallenge = generateCodeChallenge(cVerifier);
 		//alert(codeChallenge);
 		divElementOne.style.display = "none"; // hide first page
 		divElementTwo.style.display = "block"; // show second page
