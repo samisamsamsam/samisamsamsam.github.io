@@ -102,8 +102,8 @@ function readAuthUrl(){
 		divElementOne.style.display = "none"; // hide first page
 		divElementTwo.style.display = "block"; // show second page
 
-		//	alert(authClientID);
-	getAccessToken(authCode,codeChallenge,codeVerifier);
+		const clID = "23Q4C5";
+	getAccessToken(authCode,codeChallenge,codeVerifier,clID);
 		
 	}
 	else{
@@ -115,17 +115,17 @@ function readAuthUrl(){
 }
 
 
-function getAccessToken(authCodeFromURL,codeChallengeURL,codeVerifierURL){
+function getAccessToken(authCodeFromURL,codeChallengeURL,codeVerifierURL,clientID){
 	$.ajax({
 	type: 'POST',
 	url: "https://api.fitbit.com/oauth2/token",
 	crossDomain: true,
 	data: JSON.stringify({grant_type    : "client_credentials",
-	client_id: base64URL(CryptoJS.SHA256("23Q4C5")),
+	client_id: clientID,
 //    client_id: "23Q4C5",
-	code: base64URL(CryptoJS.SHA256(authCodeFromURL)),
-   // code: authCodeFromURL, 
-    code_verifier: codeChallengeURL, // already base 64 of verifier
+	code: authCodeFromURL,
+   
+    code_verifier: codeVerifierURL, 
     grant_type: "authorization_code"
 }),
     
