@@ -119,7 +119,7 @@ function readAuthUrl(){
 function getAccessToken(authCodeFromURL,codeChallengeURL,codeVerifierURL,clientID,clientSecret){
 	const setHeaderIDSecret = "23Q4C5:504e970943a9428ef0e3e0de71a37ae5";
 	const headerAJAX = "Basic " + base64URL(CryptoJS.SHA256(setHeaderIDSecret));
-	alert(headerAJAX);
+	
 	$.ajax({
 	type: 'POST',
 	url: "https://api.fitbit.com/oauth2/token",
