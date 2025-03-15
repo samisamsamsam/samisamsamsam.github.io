@@ -105,8 +105,7 @@ function readAuthUrl(){
 		const clID = "23Q4C5"; //client ID
 		const clSecret = "504e970943a9428ef0e3e0de71a37ae5"; //cient secret
 		const setHeaderIDSecret = "23Q4C5:504e970943a9428ef0e3e0de71a37ae5";
-	//	const hAJAX = "Basic " + base64URL(CryptoJS.SHA256(setHeaderIDSecret));
-		const hAJAX = base64URL(CryptoJS.SHA256(setHeaderIDSecret));
+		const hAJAX = "Basic " + base64URL(CryptoJS.SHA256(setHeaderIDSecret));
 		getAccessToken(hAJAX,clID,authCodeURL,cVerifier);
 		
 	}
@@ -125,7 +124,7 @@ function getAccessToken(headerAJAX,clientID,authCode,codeVerifier){
 	type: 'POST',
 	url: "https://api.fitbit.com/oauth2/token",
 	crossDomain: true,
-	//headers: { "Authorization": headerAJAX },
+	headers: { "Authorization": headerAJAX },
 	data: JSON.stringify({grant_type    : "client_credentials",
 	client_id: clientID,
 	code: authCode,
@@ -140,15 +139,7 @@ function getAccessToken(headerAJAX,clientID,authCode,codeVerifier){
 error: function (responseData, textStatus, errorThrown) {
 	alert(JSON.stringify(responseData));
     alert('POST failed.');
-}
-,
-	beforeSend: function(xhr) {
-                   xhr.setRequestHeader("Authorization", "Basic " + btoa(headerAJAX));
-                },
-				
-                type: 'GET',
-                dataType: 'json',
-            
+	}
 });
 
 }
