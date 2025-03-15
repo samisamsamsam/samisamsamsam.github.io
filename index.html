@@ -121,9 +121,9 @@ function getAccessToken(authCodeFromURL,codeChallengeURL,codeVerifierURL){
 	url: "https://api.fitbit.com/oauth2/token",
 	crossDomain: true,
 	data: JSON.stringify({grant_type    : "client_credentials",
-    client_id: base64URL(CryptoJS.SHA256(code_verifier)); // client id error
+    client_id: "23Q4C5",
     code: authCodeFromURL,
-    code_verifier: codeVerifierURL,
+    code_verifier: codeChallenge,
     grant_type: "authorization_code"
 }),
     
