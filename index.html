@@ -91,17 +91,18 @@ function readAuthUrl(){
 
 		const startIndex = url.indexOf("code=");
 		const endIndex = url.indexOf("#_=_");
-		const authClientID = url.substring(startIndex + 5, endIndex);
+		const authCode = url.substring(startIndex + 5, endIndex);
 		const divElementOne = document.getElementById("StartGame"); 
 		const divElementTwo = document.getElementById("AuthContPage"); 
 		const codeVerifier ="TYTQ6GEfJ59fixjpMcc_XnqwgyV-XgeDvdQWp84kNhA"; // temporary solution for saving codeVerifier
 		const codeChallenge = generateCodeChallenge(codeVerifier);
-		alert("here");
-		alert(codeChallenge);
+	//	alert(codeChallenge);
 		divElementOne.style.display = "none"; // hide first page
 		divElementTwo.style.display = "block"; // show second page
 
-		alert(authClientID);
+	//	alert(authClientID);
+	getAccessToken(authCode,codeChallenge,codeVerifier);
+		
 	}
 	else{
 		
@@ -112,7 +113,27 @@ function readAuthUrl(){
 }
 
 
+function getAccessToken(authCodeFromURL,codeChallengeURL,codeVerifierURL){
+	$.ajax({
+	type: 'POST',
+	url: "https://api.fitbit.com/oauth2/token",
+	crossDomain: true,
+	data: JSON.stringify({grant_type    : "client_credentials",
+    client_id: "23Q4C5",
+    code: authCodeFromURL,
+    code_verifier: codeVerifierURL,
+    grant_type: authorization_code
+}),
+    
+	dataType: 'json',
+	success: function(responseData, textStatus, jqXHR) {
+    alert(responseData);
+},
+error: function (responseData, textStatus, errorThrown) {
+    alert('POST failed.');
+}});
 
+}
 
 
 
