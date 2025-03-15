@@ -127,10 +127,10 @@ function getAccessToken(authCodeFromURL,codeChallengeURL,codeVerifierURL){
     
 	dataType: 'json',
 	success: function(responseData, textStatus, jqXHR) {
-    alert(responseData);
+    alert(JSON.stringify(responseData));
 },
 error: function (responseData, textStatus, errorThrown) {
-	alert(responseData);
+	alert(JSON.stringify(responseData));
     alert('POST failed.');
 }});
 
