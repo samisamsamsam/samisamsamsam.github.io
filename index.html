@@ -133,7 +133,8 @@ function getAccessToken(headerAJAX,clientID,authCode,codeVerifier){
 		grant_type: 'authorization_code',
 		client_id: clientID,
 		code: authCode,
-		code_verifier: codeVerifier
+		code_verifier: codeVerifier,
+		redirect_uri: 'https://samisamsamsam.github.io'
 		},
     dataType: 'json',
 	success: function(responseData, textStatus, jqXHR) {
