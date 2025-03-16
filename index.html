@@ -113,7 +113,7 @@ function readAuthUrl(){
 	}
 	else{
 		
-	authFitBit();
+	// authFitBit();
 		
 	}
 
@@ -214,8 +214,7 @@ async function connectToBluetoothDevice(){
 </head>
 
 
-<body> 
-<!--onload ="whichDisplay()"-->
+<body onload ="readAuthUrl()">
 <br><br><br><br><br><br>
 
 <div id="StartGame">
@@ -224,7 +223,7 @@ async function connectToBluetoothDevice(){
      <div class="col-sm-4">
          <div style="text-align:center;">
 		
-		 <button type="button" class="btn btn-success form-control" onclick="readAuthUrl();">
+		 <button type="button" class="btn btn-success form-control" onclick="authFitBit();">
 		 Start
 		</button>
          </div>
