@@ -139,8 +139,8 @@ function getAccessToken(headerAJAX,clientID,authCode,codeVerifier){
     dataType: 'json',
 	success: function(responseData, textStatus, jqXHR) {
 		const replyData = JSON.stringify(responseData);
-		
-		const startIndex = replyData.indexOf("access_token");
+		alert(replyData);
+		const startIndex = replyData.indexOf("access_token\":");
 		const endIndex = replyData.indexOf(",");
 		const accessToken = replyData.substring(startIndex + 12, endIndex);
 		alert(accessToken);
