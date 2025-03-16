@@ -144,10 +144,7 @@ function getAccessToken(headerAJAX,clientID,authCode,codeVerifier){
 		const endIndex = replyData.indexOf(",");
 		const accessToken = replyData.substring(startIndex + 15, endIndex);
 		alert(accessToken);
-		"access_token":"eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyM1E0QzUiLCJzdWIiOiI1RlQ1TkciLCJpc3MiOiJGaXRiaXQiLCJ0eXAiOiJhY2Nlc3NfdG9rZW4iLCJzY29wZXMiOiJyc29jIHJlY2cgcnNldCByaXJuIHJveHkgcnBybyBybnV0IHJzbGUgcmNmIHJhY3QgcmxvYyBycmVzIHJ3ZWkgcmhyIHJ0ZW0iLCJleHAiOjE3NDIxODU3ODcsImlhdCI6MTc0MjE1Njk4N30.9PLtO6dSEU4MXQVsKDnJzt2C1LZT-2gNDE49dgeTl90","expires_in":28800,"refresh_token":"d8dfcbb1d02b446a3bd4e397c759fd221ecfd56f772e2657181431e3c00e179c","scope":"activity profile sleep location heartrate social nutrition weight irregular_rhythm_notifications respiratory_rate electrocardiogram cardio_fitness temperature oxygen_saturation settings","token_type":"Bearer","user_id":"5FT5NG"}
-		
-		
-		":"eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyM1E0QzUiLCJzdWIiOiI1RlQ1TkciLCJpc3MiOiJGaXRiaXQiLCJ0eXAiOiJhY2Nlc3NfdG9rZW4iLCJzY29wZXMiOiJyc29jIHJlY2cgcnNldCByaXJuIHJveHkgcnBybyBybnV0IHJzbGUgcmNmIHJhY3QgcmxvYyBycmVzIHJ3ZWkgcmhyIHJ0ZW0iLCJleHAiOjE3NDIxODU3ODcsImlhdCI6MTc0MjE1Njk4N30.9PLtO6dSEU4MXQVsKDnJzt2C1LZT-2gNDE49dgeTl90"
+	
 	
 	},
 	error: function (responseData, textStatus, errorThrown) {
