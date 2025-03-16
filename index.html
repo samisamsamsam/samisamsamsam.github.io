@@ -132,10 +132,10 @@ function getAccessToken(headerAJAX,clientID,authCode,codeVerifier){
 	crossDomain: true,
 	headers: { 'Authorization': headerAJAX },
 	data: JSON.stringify({
-	client_id: clientID,
-	code: authCode,
-    code_verifier: codeVerifier, 
-    grant_type: 'authorization_code'
+	 grant_type: 'authorization_code',
+	 client_id: clientID,
+	 code: authCode,
+     code_verifier: codeVerifier
 }),
     	dataType: 'json',
 	success: function(responseData, textStatus, jqXHR) {
