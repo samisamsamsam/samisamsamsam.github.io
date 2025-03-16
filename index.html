@@ -140,13 +140,21 @@ function getAccessToken(headerAJAX,clientID,authCode,codeVerifier){
 	success: function(responseData, textStatus, jqXHR) {
 		const replyData = JSON.stringify(responseData);
 		alert(replyData);
-		const startIndex = replyData.indexOf("access_token");
-		const endIndex = replyData.indexOf("expires_in");
-		const accessToken = replyData.substring(startIndex + 15, endIndex- 3);
-		alert(accessToken);
-	
-
-	
+		let startIndex = replyData.indexOf("access_token");
+		let endIndex = replyData.indexOf("expires_in");
+		const accessToken = replyData.substring(startIndex + 15, endIndex - 3);
+		startIndex = replyData.indexOf("expires_in");
+		endIndex = replyData.indexOf("refresh_token");
+		const expireTime = replyData.substring(startIndex + 12, endIndex - 2);
+		startIndex = replyData.indexOf("refresh_token");
+		endIndex = replyData.indexOf("scope");
+		const refreshToken = replyData.substring(startIndex + 16, endIndex - 3);
+		startIndex = replyData.indexOf("scope");
+		endIndex = replyData.indexOf("token_type");
+		const scopeAllowed = replyData.substring(startIndex + 8, endIndex - 3);
+		
+		//heartrate
+		
 	},
 	error: function (responseData, textStatus, errorThrown) {
 		alert('POST failed.');
@@ -154,6 +162,9 @@ function getAccessToken(headerAJAX,clientID,authCode,codeVerifier){
 });
 
 }
+
+
+
 
 
 
