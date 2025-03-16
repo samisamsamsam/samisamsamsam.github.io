@@ -138,12 +138,16 @@ function getAccessToken(headerAJAX,clientID,authCode,codeVerifier){
 		},
     dataType: 'json',
 	success: function(responseData, textStatus, jqXHR) {
-	alert('no error');
-    alert(JSON.stringify(responseData));
+		const replyData = JSON.stringify(responseData);
+		
+		const startIndex = url.indexOf("access_token");
+		const endIndex = url.indexOf(",");
+		const accessToken = url.substring(startIndex + 12, endIndex);
+		alert(accessToken);
+	
 	},
 	error: function (responseData, textStatus, errorThrown) {
-	alert(JSON.stringify(responseData));
-    alert('POST failed.');
+		alert('POST failed.');
 	}
 });
 
