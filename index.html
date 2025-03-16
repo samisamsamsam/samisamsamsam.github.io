@@ -141,10 +141,11 @@ function getAccessToken(headerAJAX,clientID,authCode,codeVerifier){
 		const replyData = JSON.stringify(responseData);
 		alert(replyData);
 		const startIndex = replyData.indexOf("access_token");
-		const endIndex = replyData.indexOf("\",");
-		const accessToken = replyData.substring(startIndex + 15, endIndex);
+		const endIndex = replyData.indexOf("expires_in");
+		const accessToken = replyData.substring(startIndex + 15, endIndex- 3);
 		alert(accessToken);
 	
+
 	
 	},
 	error: function (responseData, textStatus, errorThrown) {
