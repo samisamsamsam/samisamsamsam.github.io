@@ -5,8 +5,6 @@
 
 
 
-
-
 <script type="text/javascript" src="jquery-1.8.3.js"></script>
 
 <title>Reel Run</title>
@@ -19,7 +17,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
 
 <script type="text/javascript">
-
+//https://samisamsamsam.github.io
 
 //right now, bluetooth device request cannot connect to the fitbit watch
 function detectBrowser() {
@@ -123,7 +121,6 @@ function readAuthUrl(){
 
 
 function getAccessToken(headerAJAX,clientID,authCode,codeVerifier){
-	
 
 	
 	$.ajax({
@@ -132,21 +129,18 @@ function getAccessToken(headerAJAX,clientID,authCode,codeVerifier){
 	crossDomain: true,
 	headers: { 'Authorization': headerAJAX },
 	data: 
-	//JSON.stringify(
 		{
 		grant_type: 'authorization_code',
 		client_id: clientID,
 		code: authCode,
 		code_verifier: codeVerifier
-		}
-	//)
-		,
+		},
     dataType: 'json',
 	success: function(responseData, textStatus, jqXHR) {
 	alert('no error');
     alert(JSON.stringify(responseData));
 	},
-error: function (responseData, textStatus, errorThrown) {
+	error: function (responseData, textStatus, errorThrown) {
 	alert(JSON.stringify(responseData));
     alert('POST failed.');
 	}
