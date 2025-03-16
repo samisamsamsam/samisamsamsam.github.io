@@ -111,10 +111,10 @@ function readAuthUrl(){
 	//	const hAJAX = "Basic " + base64URL(CryptoJS.SHA256(setHeaderIDSecret));
 		const hAJAX = "Basic " + btoa(base64URL(CryptoJS.SHA256(setHeaderIDSecret)));
 	
-		const howAJAX = "Basic " + btoa(base64URL(setHeaderIDSecret));
+		
 
 		alert(hAJAX);
-		alert(howAJAX);
+	
 		getAccessToken(hAJAX,clID,authCodeURL,cVerifier);
 		
 	}
@@ -133,8 +133,8 @@ function getAccessToken(headerAJAX,clientID,authCode,codeVerifier){
 	type: 'POST',
 	url: "https://api.fitbit.com/oauth2/token",
 	crossDomain: true,
-	data: JSON.stringify({
 	headers: { "Authorization": headerAJAX },
+	data: JSON.stringify({
 	grant_type: "client_credentials",
 	client_id: clientID,
 	code: authCode,
