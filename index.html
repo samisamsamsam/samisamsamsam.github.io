@@ -141,7 +141,7 @@ function getAccessToken(headerAJAX,clientID,authCode,codeVerifier){
 		const replyData = JSON.stringify(responseData);
 		alert(replyData);
 		const startIndex = replyData.indexOf("access_token");
-		const endIndex = replyData.indexOf(",");
+		const endIndex = replyData.indexOf("\",");
 		const accessToken = replyData.substring(startIndex + 15, endIndex);
 		alert(accessToken);
 	
