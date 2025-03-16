@@ -107,10 +107,6 @@ function readAuthUrl(){
 		const setHeaderIDSecret = "23Q4C5:504e970943a9428ef0e3e0de71a37ae5";
 
 		const hAJAX = "Basic " + btoa(setHeaderIDSecret);
-
-		alert(hAJAX);
-
-		
 		
 		getAccessToken(hAJAX,clID,authCodeURL,cVerifier);
 		
