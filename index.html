@@ -98,8 +98,9 @@ function readAuthUrl(){
 		const divElementOne = document.getElementById("StartGame"); 
 		const divElementTwo = document.getElementById("AuthContPage"); 
 		const cVerifier ="TYTQ6GEfJ59fixjpMcc_XnqwgyV-XgeDvdQWp84kNhA"; // temporary solution for saving codeVerifier
-		const codeChallenge = generateCodeChallenge(cVerifier);
-		//alert(codeChallenge);
+	//	const codeChallenge = generateCodeChallenge(cVerifier);
+		const codeChallenge = base64UrlEncode(sha256Hash(cVerifier));
+		alert(codeChallenge);
 		divElementOne.style.display = "none"; // hide first page
 		divElementTwo.style.display = "block"; // show second page
 
@@ -107,7 +108,7 @@ function readAuthUrl(){
 		const clSecret = "504e970943a9428ef0e3e0de71a37ae5"; //cient secret
 		const setHeaderIDSecret = "23Q4C5:504e970943a9428ef0e3e0de71a37ae5";
 	//	BASE64ENCODE(setHeaderIDSecret);
-		const hAJAX = "Basic " + base64URL(CryptoJS.SHA256(setHeaderIDSecret));
+	//	const hAJAX = "Basic " + base64URL(CryptoJS.SHA256(setHeaderIDSecret));
 		const hAJAX = "Basic " + btoa(setHeaderIDSecret);
 		alert(hAJAX);
 		getAccessToken(hAJAX,clID,authCodeURL,cVerifier);
