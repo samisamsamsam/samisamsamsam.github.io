@@ -124,7 +124,7 @@ function readAuthUrl(){
 
 function getAccessToken(headerAJAX,clientID,authCode,codeVerifier){
 	
-	
+
 	
 	$.ajax({
 	type: 'POST',
@@ -133,19 +133,19 @@ function getAccessToken(headerAJAX,clientID,authCode,codeVerifier){
 	headers: { 'Authorization': headerAJAX },
 	data: 
 	//JSON.stringify(
-	{
-	 grant_type: 'authorization_code',
-	 client_id: clientID,
-	 code: authCode,
-     code_verifier: codeVerifier
-}
-//)
-,
-    	dataType: 'json',
+		{
+		grant_type: 'authorization_code',
+		client_id: clientID,
+		code: authCode,
+		code_verifier: codeVerifier
+		}
+	//)
+		,
+    dataType: 'json',
 	success: function(responseData, textStatus, jqXHR) {
 	alert('no error');
     alert(JSON.stringify(responseData));
-},
+	},
 error: function (responseData, textStatus, errorThrown) {
 	alert(JSON.stringify(responseData));
     alert('POST failed.');
