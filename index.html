@@ -129,17 +129,31 @@ function readAuthUrl(){
 
 function getAccessToken(headerAJAX,clientID,authCode,codeVerifier){
 	
-	$.ajax({
-	type: 'POST',
-	url: "https://api.fitbit.com/oauth2/token",
-	crossDomain: true,
-	headers: { "Authorization": headerAJAX },
-	data: JSON.stringify({
-	grant_type: "client_credentials",
-	client_id: clientID,
-	code: authCode,
-    code_verifier: codeVerifier, 
-    grant_type: "authorization_code"
+POST https://api.fitbit.com/oauth2/token
+Authorization: headerAJAX
+Content-Type: application/x-www-form-urlencoded
+
+client_id=clientID3&code=authCode&code_verifier=codeVerifier&grant_type=authorization_code
+	
+	
+	
+	
+	
+	
+	
+	
+	
+//	$.ajax({
+//	type: 'POST',
+//	url: "https://api.fitbit.com/oauth2/token",
+//	crossDomain: true,
+//	headers: { "Authorization": headerAJAX },
+//	data: JSON.stringify({
+//	grant_type: "client_credentials",
+//	client_id: clientID,
+//	code: authCode,
+//    code_verifier: codeVerifier, 
+ //   grant_type: "authorization_code"
 }),
     
 	dataType: 'json',
