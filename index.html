@@ -68,8 +68,9 @@ function generateCodeVerifier(){
 
 //function using the Fitbit Web API authorization process
 function authFitBit(){
+	//https://base64.guru/converter/decode
 //    const codeVerifier = generateCodeVerifier(); <----- must use to make it secure
-	const codeVerifier ="TYTQ6GEfJ59fixjpMcc_XnqwgyV-XgeDvdQWp84kNhA"; // temporary solution for saving codeVerifier
+	const codeVerifier ="TYTQ6GEfJ59fixjpMcc_XnqwgyV-XgeDvdQWp84kNhA"; // temporary solution 
 //	const codeChallenge = btoa(codeVerifier);
 	const codeChallenge = generateCodeChallenge(codeVerifier);
 
@@ -91,7 +92,7 @@ function readAuthUrl(){
 	const url = window.location.href;
 
 	if (window.location.href.indexOf("code=") != -1) { //found it
-
+	
 		const startIndex = url.indexOf("code=");
 		const endIndex = url.indexOf("#_=_");
 		const authCodeURL = url.substring(startIndex + 5, endIndex);
@@ -99,7 +100,7 @@ function readAuthUrl(){
 		const divElementTwo = document.getElementById("AuthContPage"); 
 		const cVerifier ="TYTQ6GEfJ59fixjpMcc_XnqwgyV-XgeDvdQWp84kNhA"; // temporary solution for saving codeVerifier
 	//	const codeChallenge = btoa(cVerifier);
-		const codeChallenge = generateCodeChallenge(codeVerifier);
+		const codeChallenge = generateCodeChallenge(cVerifier);
 		divElementOne.style.display = "none"; // hide first page
 		divElementTwo.style.display = "block"; // show second page
 
