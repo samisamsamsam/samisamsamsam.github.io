@@ -168,6 +168,7 @@ function getAccessToken(headerAJAX,clientID,authCode,codeVerifier){
 
 
 function getHeartRate(accessToken){
+alert("here");
 	const headerBearer = "Bearer " + accessToken;
 	let now = new Date();
 	let year = now.getFullYear();
