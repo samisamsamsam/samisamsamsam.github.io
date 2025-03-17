@@ -2,7 +2,6 @@
 
 {
   "fitbit": {
-    ...
     "requestedPermissions": [
       "access_activity",
       "access_aod",
