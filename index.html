@@ -4,7 +4,7 @@
 <head>
 <script type="module" src="https://samisamsamsam.github.io/package.json">
 
-	import { me as appbit } from "appbit";
+	//import { me as appbit } from "appbit";
 	import { HeartRateSensor } from "heart-rate";
 </script>
 
@@ -158,7 +158,7 @@ function getAccessToken(headerAJAX,clientID,authCode,codeVerifier){
 		const scopeAllowed = replyData.substring(startIndex + 8, endIndex - 3);
 		if (scopeAllowed.indexOf("heartrate") != -1) { //found it
 
-				if (HeartRateSensor && appbit.permissions.granted("access_heart_rate")) {
+				if (HeartRateSensor) {
 					
 						if (HeartRateSensor) {
 						// 1 reading per second, 60 readings per batch
