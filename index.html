@@ -194,9 +194,9 @@ function getHeartRate(accessToken){
 	
 	let newDate = newYear+"-"+newMonth+"-"+newDay;
 	
-	let urlHeartRate = "https://api.fitbit.com/1/user/-/activities/heart/date/"+currentDate+"/"+newDate+"/1sec/time/"+time+"/"+newTime+".json";
+	//let urlHeartRate = "https://api.fitbit.com/1/user/-/activities/heart/date/"+currentDate+"/"+newDate+"/1sec/time/"+time+"/"+newTime+".json";
 	
-	//let urlHeartRate = "https://api.fitbit.com/1/user/-/activities/heart/date/"+currentDate+"/"+currentDate+"/1sec.json";
+	let urlHeartRate = "https://api.fitbit.com/1/user/-/activities/heart/date/"+currentDate+"/"+currentDate+"/1sec.json";
 		$.ajax({
 			type: 'GET',
 			url: urlHeartRate,
