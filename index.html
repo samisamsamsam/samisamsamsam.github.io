@@ -173,7 +173,7 @@ function getHeartRate(accessToken){
 	const now = new Date();
 	const date = now.toLocaleDateString();
 	const time = now.toLocaleTimeString();
-	let urlHeartRate = "https://api.fitbit.com/1/user/-/activities/heart/date/today/today/1sec.json";
+	let urlHeartRate = "https://api.fitbit.com/1/user/-/activities/heart/date/"+date+"/"+date+"/1sec.json";
 		$.ajax({
 			type: 'GET',
 			url: urlHeartRate,
@@ -197,6 +197,15 @@ function getHeartRate(accessToken){
 
 		});
 }
+
+//---------------------------------------------------------------------------------------
+
+//{"readyState":4,"responseText":"{\"errors\":[{\"errorType\":\"validation\",\"fieldName\":\"period\",\"message\":\"Invalid time series period: today\"}]}","responseJSON":{"errors":[{"errorType":"validation","fieldName":"period","message":"Invalid time series period: today"}]},"status":400,"statusText":"error"}
+
+
+//---------------------------------------------------------------------------------------------
+
+
 
 
 
