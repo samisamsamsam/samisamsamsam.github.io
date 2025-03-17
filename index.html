@@ -170,22 +170,29 @@ function getAccessToken(headerAJAX,clientID,authCode,codeVerifier){
 function getHeartRate(accessToken){
 	const headerBearer = "Bearer " + accessToken;
 	let now = new Date();
-	let newTime = new Date(now);
-	newTime.setHours(now.getHours() + 1);
-	const date = now.toLocaleDateString();
-	const time = now.toLocaleTimeString();
-	let endTime = newTime.toLocaleDateString();
-	let urlHeartRate = "https://api.fitbit.com/1/user/-/activities/heart/date/"+date+"/"+date+"/1sec/time/"+time+"/"+endTime+".json";
+	let year = now.getFullYear();
+    let month = String(now.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
+    let day = String(now.getDate()).padStart(2, '0');
+	
+	let currentDate = year+"-"+month+"-"+day;
+	
+	
+	alert(currentDate);
+	
+
+	//let urlHeartRate = "https://api.fitbit.com/1/user/-/activities/heart/date/"+currentDate+"/"+currentDate+"/1sec/time/"+time+"/"+endTime+".json";
+	
+	let urlHeartRate = "https://api.fitbit.com/1/user/-/activities/heart/date/"+currentDate+"/"+currentDate+"/1sec.json";
 		$.ajax({
 			type: 'GET',
 			url: urlHeartRate,
 			headers: { 'Authorization': headerBearer },
 			dataType: 'json',
-			success: function(responseData, textStatus, jqXHR) {
+		success: function(responseData, textStatus, jqXHR) {
 				alert(JSON.stringify(responseData));
-			},
+		},
 			error: function (responseData, textStatus, errorThrown) {
-				alert(JSON.stringify(responseData));
+			alert(JSON.stringify(responseData));
 				alert('POST failed.');
 			}
 
@@ -193,7 +200,8 @@ function getHeartRate(accessToken){
 }
 
 //---------------------------------------------------------------------------------------
-
+//https://api.fitbit.com/1/user/-/activities/heart/date/3/17/2025/3/17/2025/1sec/time/12:28:49%20PM/3/17/2025.json
+ //yyyy-MM-dd
 
 //---------------------------------------------------------------------------------------------
 
