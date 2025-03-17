@@ -177,11 +177,12 @@ function getHeartRate(accessToken){
 	let hour = String(now.getHours());
 	let minutes = String(now.getMinutes());
 	let time = hour +":"+ minutes;
+	now.setMinutes(now.getMinutes() + 1);
+	alert(now);
 	//let newTime = now.setMinutes(now.getMinutes() + 1);
 	//let newHour = String(newTime.getHours());
 	//let newMinutes = String(newTime.getMinutes());
 	//newTime = newHour + ":" + newMinutes;
-	alert(time);
 	
 	let currentDate = year+"-"+month+"-"+day;
 	
