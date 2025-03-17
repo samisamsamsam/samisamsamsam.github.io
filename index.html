@@ -151,7 +151,6 @@ function getAccessToken(headerAJAX,clientID,authCode,codeVerifier){
 		endIndex = replyData.indexOf("token_type");
 		const scopeAllowed = replyData.substring(startIndex + 8, endIndex - 3);
 		if (scopeAllowed.indexOf("heartrate") != -1) { //found it
-				alert("found it");
 				getHeartRate(accToken);
 				
 		}
