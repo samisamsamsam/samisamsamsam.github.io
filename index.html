@@ -152,13 +152,29 @@ function getAccessToken(headerAJAX,clientID,authCode,codeVerifier){
 		startIndex = replyData.indexOf("scope");
 		endIndex = replyData.indexOf("token_type");
 		const scopeAllowed = replyData.substring(startIndex + 8, endIndex - 3);
-		if (scopeAllowed.indexOf("code=") != -1) { //found it
+		if (scopeAllowed.indexOf("heartrate") != -1) { //found it
 			import { me as appbit } from "appbit";
 			import { HeartRateSensor } from "heart-rate";
 
 				if (HeartRateSensor && appbit.permissions.granted("access_heart_rate")) {
-				const hrm = new HeartRateSensor();
-				hrm.start();
+					
+						if (HeartRateSensor) {
+						// 1 reading per second, 60 readings per batch
+						let hrm = new HeartRateSensor({ frequency: 1, batch: 60 });
+						hrm.addEventListener("reading", () => {
+						for (let index = 0; index < hrm.readings.timestamp.length; index++) {
+							console.log(
+							`HeartRateSensor Reading: \
+							timestamp=${hrm.readings.timestamp[index]}, \
+							[${hrm.readings.heartRate[index]}]`
+							);
+						}
+						});
+						hrm.start();
+						}	
+				}
+				else{
+					alert("Need Access To Heart Rate");
 				}
 
 		}
