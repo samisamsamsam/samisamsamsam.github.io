@@ -157,15 +157,13 @@ function getAccessToken(headerAJAX,clientID,authCode,codeVerifier){
 		endIndex = replyData.indexOf("token_type");
 		const scopeAllowed = replyData.substring(startIndex + 8, endIndex - 3);
 		if (scopeAllowed.indexOf("heartrate") != -1) { //found it
-			//var hrm = new HeartRateSensor();
-
-			// Declare an event handler that will be called every time a new HR value is received.
-			hrm.onreading = function() {
-			// Peek the current sensor values
-			console.log("Current heart rate: " + hrm.heartRate);
-			hrLabel.text = hrm.heartRate;
-			lastValueTimestamp = Date.now();
-		}
+					if (HeartRateSensor) {
+					let hrm = new HeartRateSensor();
+					hrm.onreading = function () {
+					console.log('Current heart rate: ' + hrm.heartRate);
+					};
+					hrm.start();
+					}
 
 		// Begin monitoring the sensor
 		hrm.start();
