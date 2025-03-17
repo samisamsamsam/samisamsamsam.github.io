@@ -137,7 +137,7 @@ function getAccessToken(headerAJAX,clientID,authCode,codeVerifier){
     dataType: 'json',
 	success: function(responseData, textStatus, jqXHR) {
 		const replyData = JSON.stringify(responseData);
-		alert(replyData);
+		
 		let startIndex = replyData.indexOf("access_token");
 		let endIndex = replyData.indexOf("expires_in");
 		const accessToken = replyData.substring(startIndex + 15, endIndex - 3);
