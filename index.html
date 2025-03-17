@@ -140,7 +140,7 @@ function getAccessToken(headerAJAX,clientID,authCode,codeVerifier){
 		
 		let startIndex = replyData.indexOf("access_token");
 		let endIndex = replyData.indexOf("expires_in");
-		const accessToken = replyData.substring(startIndex + 15, endIndex - 3);
+		const accToken = replyData.substring(startIndex + 15, endIndex - 3);
 		startIndex = replyData.indexOf("expires_in");
 		endIndex = replyData.indexOf("refresh_token");
 		const expireTime = replyData.substring(startIndex + 12, endIndex - 2);
@@ -152,9 +152,11 @@ function getAccessToken(headerAJAX,clientID,authCode,codeVerifier){
 		const scopeAllowed = replyData.substring(startIndex + 8, endIndex - 3);
 		if (scopeAllowed.indexOf("heartrate") != -1) { //found it
 				alert("found it");
+				getHeartRate(accToken);
+				
 		}
 		else{
-		alert("Need Access To Heart Rate");
+			alert("Need Access To Heart Rate");
 		}
 		
 	},
@@ -166,8 +168,35 @@ function getAccessToken(headerAJAX,clientID,authCode,codeVerifier){
 }
 
 
+function getHeartRate(accessToken){
+	const headerBearer = "Bearer " + btoa(accessToken);
+	const now = new Date();
+	const date = now.toLocaleDateString();
+	const time = now.toLocaleTimeString();
+	let urlHeartRate = "https://api.fitbit.com/1/user/-/activities/heart/date/today/today/1sec.json";
+		$.ajax({
+			type: 'GET',
+			url: urlHeartRate,
+			headers: { 'Authorization': headerBearer },
+		//	data: 
+		//		{
+		//		grant_type: 'authorization_code',
+		//		client_id: clientID,
+		//		code: authCode,
+		//		code_verifier: codeVerifier,
+		//		redirect_uri: 'https://samisamsamsam.github.io'
+		//		},
+			dataType: 'json',
+			success: function(responseData, textStatus, jqXHR) {
+				alert(responseData);
+			},
+			error: function (responseData, textStatus, errorThrown) {
+				alert(responseData);
+				alert('POST failed.');
+			}
 
-
+		});
+}
 
 
 
