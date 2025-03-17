@@ -169,11 +169,12 @@ function getAccessToken(headerAJAX,clientID,authCode,codeVerifier){
 
 function getHeartRate(accessToken){
 	const headerBearer = "Bearer " + accessToken;
-	const now = new Date();
+	let now = new Date();
+	let newTime = new Date(now);
+	newTime.setHours(now.getHours() + 1);
 	const date = now.toLocaleDateString();
-	const newTime = new Date(now.setHours(now.getHours() + 1));
 	const time = now.toLocaleTimeString();
-	const endTime = newTime.toLocaleDateString();
+	let endTime = newTime.toLocaleDateString();
 	let urlHeartRate = "https://api.fitbit.com/1/user/-/activities/heart/date/"+date+"/"+date+"/1sec/time/"+time+"/"+endTime+".json";
 		$.ajax({
 			type: 'GET',
