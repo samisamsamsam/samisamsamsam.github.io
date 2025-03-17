@@ -5,6 +5,8 @@
 	import { HeartRateSensor } from "heart-rate";
 </script>
 
+
+
 <html>
 
 <head>
@@ -19,7 +21,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
 
 <script type="text/javascript">
-
+var hrm = new HeartRateSensor();
 //right now, bluetooth device request cannot connect to the fitbit watch
 function detectBrowser() {
 
@@ -154,27 +156,18 @@ function getAccessToken(headerAJAX,clientID,authCode,codeVerifier){
 		endIndex = replyData.indexOf("token_type");
 		const scopeAllowed = replyData.substring(startIndex + 8, endIndex - 3);
 		if (scopeAllowed.indexOf("heartrate") != -1) { //found it
+			//var hrm = new HeartRateSensor();
 
-				if (HeartRateSensor) {
-					
-						if (HeartRateSensor) {
-						// 1 reading per second, 60 readings per batch
-						let hrm = new HeartRateSensor({ frequency: 1, batch: 60 });
-						hrm.addEventListener("reading", () => {
-						for (let index = 0; index < hrm.readings.timestamp.length; index++) {
-							console.log(
-							`HeartRateSensor Reading: \
-							timestamp=${hrm.readings.timestamp[index]}, \
-							[${hrm.readings.heartRate[index]}]`
-							);
-						}
-						});
-						hrm.start();
-						}	
-				}
-				else{
-					alert("Need Access To Heart Rate");
-				}
+			// Declare an event handler that will be called every time a new HR value is received.
+			hrm.onreading = function() {
+			// Peek the current sensor values
+			console.log("Current heart rate: " + hrm.heartRate);
+			hrLabel.text = hrm.heartRate;
+			lastValueTimestamp = Date.now();
+		}
+
+		// Begin monitoring the sensor
+		hrm.start();
 
 		}
 		else{
