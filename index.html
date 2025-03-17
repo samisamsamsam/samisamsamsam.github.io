@@ -177,15 +177,14 @@ function getHeartRate(accessToken){
 	let hour = String(now.getHours());
 	let minutes = String(now.getMinutes());
 	let time = hour +":"+ minutes;
+	
 	now.setMinutes(now.getMinutes() + 1);
-	alert(now);
-	//let newTime = now.setMinutes(now.getMinutes() + 1);
-	//let newHour = String(newTime.getHours());
-	//let newMinutes = String(newTime.getMinutes());
-	//newTime = newHour + ":" + newMinutes;
+	let newMinutes = String(now.getMinutes());
+	let newHour = String(now.getHours());
 	
+	let newTime = newHour + ":" + newMinutes;
 	let currentDate = year+"-"+month+"-"+day;
-	
+	alert(newTime);
 	//let urlHeartRate = "https://api.fitbit.com/1/user/-/activities/heart/date/"+currentDate+"/"+currentDate+"/1sec/time/"+time+"/"+newTime+".json";
 	
 	let urlHeartRate = "https://api.fitbit.com/1/user/-/activities/heart/date/"+currentDate+"/"+currentDate+"/1sec.json";
