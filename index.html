@@ -1,10 +1,4 @@
 <!DOCTYPE html>
-<!--<script type="module" src="index.js">
-
-	//import { me as appbit } from "appbit";
-	import { HeartRateSensor } from "heart-rate";
-</script>-->
-
 
 
 <html>
@@ -22,7 +16,7 @@
 
 <script type="text/javascript">
 
-//var hrm = new HeartRateSensor();
+
 //right now, bluetooth device request cannot connect to the fitbit watch
 function detectBrowser() {
 
@@ -157,15 +151,7 @@ function getAccessToken(headerAJAX,clientID,authCode,codeVerifier){
 		endIndex = replyData.indexOf("token_type");
 		const scopeAllowed = replyData.substring(startIndex + 8, endIndex - 3);
 		if (scopeAllowed.indexOf("heartrate") != -1) { //found it
-				//	if (HeartRateSensor) {
-				//	let hrm = new HeartRateSensor();
-				//	hrm.onreading = function () {
-				//	console.log('Current heart rate: ' + hrm.heartRate);
-				//	};
-				//	hrm.start();
-				//	}
-
-
+				alert("found it");
 		}
 		else{
 		alert("Need Access To Heart Rate");
