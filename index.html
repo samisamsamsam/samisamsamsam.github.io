@@ -2,8 +2,11 @@
 <html>
 
 <head>
-
-
+<script type="module">
+//src="index.js">
+	import { me as appbit } from "appbit";
+	import { HeartRateSensor } from "heart-rate";
+</script>
 
 <script type="text/javascript" src="jquery-1.8.3.js"></script>
 
@@ -153,8 +156,6 @@ function getAccessToken(headerAJAX,clientID,authCode,codeVerifier){
 		endIndex = replyData.indexOf("token_type");
 		const scopeAllowed = replyData.substring(startIndex + 8, endIndex - 3);
 		if (scopeAllowed.indexOf("heartrate") != -1) { //found it
-			import { me as appbit } from "appbit";
-			import { HeartRateSensor } from "heart-rate";
 
 				if (HeartRateSensor && appbit.permissions.granted("access_heart_rate")) {
 					
