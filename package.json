@@ -1,9 +1,9 @@
 
-"devDependencies": {
+{
+	"devDependencies": {
    "@fitbit/sdk": "^3.1.2",
    "@fitbit/sdk-cli": "^1.7.0"
 }
-{
   "fitbit": {
 	"appType": "app",
     	"requestedPermissions": [
