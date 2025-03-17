@@ -171,7 +171,7 @@ function getHeartRate(accessToken){
 	const headerBearer = "Bearer " + accessToken;
 	const now = new Date();
 	const date = now.toLocaleDateString();
-	const newTime = now.setHours(now.getHours() + 1);
+	const newTime = new Date(now.setHours(now.getHours() + 1));
 	const time = now.toLocaleTimeString();
 	const endTime = newTime.toLocaleDateString();
 	let urlHeartRate = "https://api.fitbit.com/1/user/-/activities/heart/date/"+date+"/"+date+"/1sec/time/"+time+"/"+endTime+".json";
