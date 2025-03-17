@@ -22,7 +22,7 @@
 
 <script type="text/javascript">
 
-var hrm = new HeartRateSensor();
+//var hrm = new HeartRateSensor();
 //right now, bluetooth device request cannot connect to the fitbit watch
 function detectBrowser() {
 
@@ -157,16 +157,14 @@ function getAccessToken(headerAJAX,clientID,authCode,codeVerifier){
 		endIndex = replyData.indexOf("token_type");
 		const scopeAllowed = replyData.substring(startIndex + 8, endIndex - 3);
 		if (scopeAllowed.indexOf("heartrate") != -1) { //found it
-					if (HeartRateSensor) {
-					let hrm = new HeartRateSensor();
-					hrm.onreading = function () {
-					console.log('Current heart rate: ' + hrm.heartRate);
-					};
-					hrm.start();
-					}
+				//	if (HeartRateSensor) {
+				//	let hrm = new HeartRateSensor();
+				//	hrm.onreading = function () {
+				//	console.log('Current heart rate: ' + hrm.heartRate);
+				//	};
+				//	hrm.start();
+				//	}
 
-		// Begin monitoring the sensor
-		hrm.start();
 
 		}
 		else{
