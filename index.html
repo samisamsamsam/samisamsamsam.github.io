@@ -313,7 +313,7 @@ function bobberBobbing(){
 	bobber.x = 300;
 	bobber.y = 300;
 	fishingStage.addChild(bobber);
-	steadyBobber();
+	steadyBobber(bobber);
 	//set the FPS (how many times you want the stage to refresh per second)
 createjs.Ticker.setFPS(60);
 	//add an event listener to that same Ticker class that will actually cause the stage refresh each time a tick is caught
@@ -328,7 +328,7 @@ createjs.Ticker.addEventListener("tick", fishingStage);
 
 
 }
-function steadyBobber(){
+function steadyBobber(bobber){
 
 	//Get our bobber instance and pass in loop: 
 	//loop: -1 will make our animation run indefinitely
