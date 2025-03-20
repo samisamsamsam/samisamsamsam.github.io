@@ -69,10 +69,12 @@ function generateCodeVerifier(){
 }
 
     function generateCodeChallenge(code_verifier) {
+	//crytojs needs to be updated : out-dated
       return code_challenge = base64URL(CryptoJS.SHA256(code_verifier))
     }
 	
     function base64URL(string) {
+	//crytojs needs to be updated : out-dated
       return string.toString(CryptoJS.enc.Base64).replace(/=/g, '').replace(/\+/g, '-').replace(/\//g, '_')
     }
 
