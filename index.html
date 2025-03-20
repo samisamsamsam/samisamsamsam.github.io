@@ -320,13 +320,21 @@ function bobberBobbing(){
 	water.y = 300;
 	fishingStage.addChild(water);
 	fishingStage.update();
-	steadyBobber(bobber,fishingStage);//bobber bobs up and down
+	
 	
 	createjs.Ticker.setInterval(25);
 	//add an event listener to that same Ticker class that will actually cause the stage refresh each time a tick is caught
-	createjs.Ticker.addEventListener("tick", fishingStage);
+	createjs.Ticker.addEventListener("tick", animationFishing(bobber,fishingStage));
 	
-	//bobberBobble(bobber,fishingStage);
+	
+
+function animationFishing(bobber,fishingStage){
+steadyBobber(bobber,fishingStage);//bobber bobs up and down
+//bobberBobble(bobber,fishingStage);
+
+}
+
+
 
 
 }
