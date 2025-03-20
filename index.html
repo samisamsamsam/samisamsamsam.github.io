@@ -313,7 +313,7 @@ function bobberBobbing(){
 	bobber.x = 300;
 	bobber.y = 300;
 	fishingStage.addChild(bobber);
-	steadyBobber(bobber);//bobber bobs up and down
+	steadyBobber(bobber,fishingStage);//bobber bobs up and down
 	
 	var water = new createjs.Shape();
 	water.graphics.beginFill("#2275d3").drawRect(0, 0, 600, 300);
@@ -322,11 +322,11 @@ function bobberBobbing(){
 	fishingStage.addChild(water);
 	fishingStage.update();
 	
-	bobberBobble(bobber);
+	bobberBobble(bobber,fishingStage);
 
 
 }
-function steadyBobber(bobber){
+function steadyBobber(bobber,fishingStage){
 
 	//Get our bobber instance and pass in loop: 
 	//loop: -1 will make our animation run indefinitely
@@ -344,7 +344,7 @@ createjs.Ticker.addEventListener("tick", fishingStage);
 
 }
 
-function bobberBobble(bobber){
+function bobberBobble(bobber,fishingStage){
 
 createjs.Tween.get(bobber, { loop: 5 })
 
