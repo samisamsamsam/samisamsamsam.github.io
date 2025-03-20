@@ -214,7 +214,7 @@ function getHeartRate(accessToken){
 			headers: { 'Authorization': headerBearer },
 			dataType: 'json',
 			success: function(responseData, textStatus, jqXHR) {
-			stageContainer();
+			bobberBobbing();
 			const divElementOne = document.getElementById("StartGame"); 
 			const divElementTwo = document.getElementById("AuthContPage"); 
 			divElementOne.style.display = "none"; // hide first page
@@ -264,7 +264,7 @@ async function connectToBluetoothDevice(){
    //alert("here");
 	//discover bluetooth services after connection
 		device.gatt.connect().then(server => {
-			stageContainer();
+			bobberBobbing();
 			const divElementOne = document.getElementById("StartGame"); 
 			const divElementTwo = document.getElementById("AuthContPage"); 
 			divElementOne.style.display = "none"; // hide first page
@@ -296,32 +296,31 @@ async function connectToBluetoothDevice(){
 
 
 
-
+//----------------------------------------------------------------------------------
 
 //Fishing Graphics
 
-function stageContainer(){
+//-----------------------------------------------------------------------------------
+
+function bobberBobbing(){
 
 
 	var fishingStage = new createjs.Stage("fishingCanvas");
 	
 
-	var circle = new createjs.Shape();
-	circle.graphics.beginFill("#df2e1d").drawCircle(0, 0, 50);
-	circle.x = 300;
-	circle.y = 300;
-	fishingStage.addChild(circle);
+	var bobber = new createjs.Shape();
+	bobber.graphics.beginFill("#df2e1d").drawCircle(0, 0, 50);
+	bobber.x = 300;
+	bobber.y = 300;
+	fishingStage.addChild(bobber);
 	
 	
-	//First, get our circle instance and pass in loop: true, so our animation runs infinitely
-createjs.Tween.get(circle, { loop: true })
-	//The .to's you see tell the object what to do and where to go, as well as how long to take and what easing to use. Changing the x value will move the object horizontally, and changing the alpha value will fade it out or in.
-	//.to({ x: 400 }, 1000, createjs.Ease.getPowInOut(4))
-.to({ y: 325 }, 500, createjs.Ease.getPowInOut(2))
-	//.to({ y: 325 }, 100)
-.to({ y: 300 }, 500, createjs.Ease.getPowInOut(2));
-	//.to({ x: 100 }, 800, createjs.Ease.getPowInOut(2))
-	//.to({ y: 300 }, 500);
+	//Get our bobber instance and pass in loop: true, so our animation runs infinitely
+createjs.Tween.get(bobber, { loop: true })
+
+.to({ y: 325 }, 500, createjs.Ease.getPowInOut(2))//bob down
+.to({ y: 300 }, 500, createjs.Ease.getPowInOut(2));//bob up
+	
 	//set the FPS (how many times you want the stage to refresh per second)
 createjs.Ticker.setFPS(60);
 	//add an event listener to that same Ticker class that will actually cause the stage refresh each time a tick is caught
@@ -358,7 +357,7 @@ createjs.Ticker.addEventListener("tick", fishingStage);
 	 </div>
 	 <div class="col-sm-4"></div>
 	</div>	 
-	 <br><br><br><br><br><br>
+	 <br><br><br><br>
 	 <div class="row">
  	 <div class="col-sm-4"></div>
      <div class="col-sm-4">
