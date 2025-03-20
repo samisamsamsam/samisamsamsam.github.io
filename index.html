@@ -308,14 +308,14 @@ function stageContainer(){
 
 	var circle = new createjs.Shape();
 	circle.graphics.beginFill("#df2e1d").drawCircle(0, 0, 50);
-	circle.x = 100;
+	circle.x = 500;
 	circle.y = 100;
 	fishingStage.addChild(circle);
 	//fishingStage.update();
 	//First, get our circle instance and pass in loop: true, so our animation runs infinitely
 	createjs.Tween.get(circle, { loop: true })
 	//The .to's you see tell the object what to do and where to go, as well as how long to take and what easing to use. Changing the x value will move the object horizontally, and changing the alpha value will fade it out or in.
-	.to({ x: 400 }, 1000, createjs.Ease.getPowInOut(4))
+	//.to({ x: 400 }, 1000, createjs.Ease.getPowInOut(4))
 	.to({ y: 175 }, 500, createjs.Ease.getPowInOut(2))
 	.to({ y: 225 }, 100)
 	.to({ y: 200 }, 500, createjs.Ease.getPowInOut(2))
