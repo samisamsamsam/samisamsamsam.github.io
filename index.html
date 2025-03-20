@@ -98,16 +98,12 @@ function authFitBit(){
 
 function readAuthUrl(){
 	const url = window.location.href;
-
+	
 	if (window.location.href.indexOf("code=") != -1) { //found it
 	
 		const startIndex = url.indexOf("code=");
 		const endIndex = url.indexOf("#_=_");
 		const authCodeURL = url.substring(startIndex + 5, endIndex);
-		const divElementOne = document.getElementById("StartGame"); 
-		const divElementTwo = document.getElementById("AuthContPage"); 
-			divElementOne.style.display = "none"; // hide first page
-			divElementTwo.style.display = "block"; // show second page
 		
 		const cVerifier ="TYTQ6GEfJ59fixjpMcc_XnqwgyV-XgeDvdQWp84kNhA"; // temporary solution for saving codeVerifier
 	//	const codeChallenge = btoa(cVerifier);
@@ -214,6 +210,11 @@ function getHeartRate(accessToken){
 			headers: { 'Authorization': headerBearer },
 			dataType: 'json',
 			success: function(responseData, textStatus, jqXHR) {
+			stageContainer();
+			const divElementOne = document.getElementById("StartGame"); 
+			const divElementTwo = document.getElementById("AuthContPage"); 
+			divElementOne.style.display = "none"; // hide first page
+			divElementTwo.style.display = "block"; // show second page
 				alert(JSON.stringify(responseData));
 			},
 			error: function (responseData, textStatus, errorThrown) {
@@ -259,8 +260,9 @@ async function connectToBluetoothDevice(){
    //alert("here");
 	//discover bluetooth services after connection
 		device.gatt.connect().then(server => {
-		const divElementOne = document.getElementById("StartGame"); 
-		const divElementTwo = document.getElementById("AuthContPage"); 
+			stageContainer();
+			const divElementOne = document.getElementById("StartGame"); 
+			const divElementTwo = document.getElementById("AuthContPage"); 
 			divElementOne.style.display = "none"; // hide first page
 			divElementTwo.style.display = "block"; // show second page
 			alert("Successfully connected to "+device.name);
@@ -290,6 +292,24 @@ async function connectToBluetoothDevice(){
 
 
 
+
+
+//Fishing Graphics
+
+function stageContainer(){
+
+
+	var fishingStage = new createjs.Stage("fishingCanvas");
+	
+
+	var circle = new createjs.Shape();
+	circle.graphics.beginFill("DeepSkyBlue").drawCircle(0, 0, 50);
+	circle.x = 100;
+	circle.y = 100;
+	fishingStage.addChild(circle);
+	fishingStage.update();
+
+}
 </script>
 
 </head>
