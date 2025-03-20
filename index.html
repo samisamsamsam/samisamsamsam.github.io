@@ -315,8 +315,10 @@ function bobberBobbing(){
 	fishingStage.addChild(bobber);
 	
 	
-	//Get our bobber instance and pass in loop: true, so our animation runs infinitely
-createjs.Tween.get(bobber, { loop: true })
+	//Get our bobber instance and pass in loop: 
+	//loop: true will make our animation run infinitely
+	//loop: -1 will make our animation run indefinitely
+createjs.Tween.get(bobber, { loop: -1 })
 
 .to({ y: 325 }, 500, createjs.Ease.getPowInOut(2))//bob down
 .to({ y: 300 }, 500, createjs.Ease.getPowInOut(2));//bob up
@@ -338,6 +340,8 @@ createjs.Ticker.addEventListener("tick", fishingStage);
 
 
 function bobberBobble(){
+
+
 
 }
 
