@@ -350,6 +350,10 @@ createjs.Tween.get(bobber, { loop: 5 })
 
 .to({ y: 325 }, 100, createjs.Ease.getPowInOut(2))//bob down
 .to({ y: 300 }, 100, createjs.Ease.getPowInOut(2));//bob up
+	//set the FPS (how many times you want the stage to refresh per second)
+createjs.Ticker.setFPS(60);
+	//add an event listener to that same Ticker class that will actually cause the stage refresh each time a tick is caught
+createjs.Ticker.addEventListener("tick", fishingStage);
 
 	
 
