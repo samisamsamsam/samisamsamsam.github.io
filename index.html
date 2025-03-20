@@ -312,12 +312,6 @@ function stageContainer(){
 	circle.y = 300;
 	fishingStage.addChild(circle);
 	
-	var water = new createjs.Shape();
-	water.graphics.beginFill("#2275d3").drawRect(0, 0, 300, 300);
-	water.x = 0;
-	water.y = 300;
-	fishingStage.addChild(water);
-	fishingStage.update();
 	
 	//First, get our circle instance and pass in loop: true, so our animation runs infinitely
 createjs.Tween.get(circle, { loop: true })
@@ -332,6 +326,15 @@ createjs.Tween.get(circle, { loop: true })
 createjs.Ticker.setFPS(60);
 	//add an event listener to that same Ticker class that will actually cause the stage refresh each time a tick is caught
 createjs.Ticker.addEventListener("tick", fishingStage);
+
+	var water = new createjs.Shape();
+	water.graphics.beginFill("#2275d3").drawRect(0, 0, 300, 300);
+	water.x = 0;
+	water.y = 300;
+	fishingStage.addChild(water);
+	fishingStage.update();
+
+
 }
 </script>
 
