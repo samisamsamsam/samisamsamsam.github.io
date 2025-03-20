@@ -313,18 +313,16 @@ function bobberBobbing(){
 	bobber.x = 300;
 	bobber.y = 300;
 	fishingStage.addChild(bobber);
-	steadyBobber(bobber);
-	//set the FPS (how many times you want the stage to refresh per second)
-createjs.Ticker.setFPS(60);
-	//add an event listener to that same Ticker class that will actually cause the stage refresh each time a tick is caught
-createjs.Ticker.addEventListener("tick", fishingStage);
-
+	steadyBobber(bobber);//bobber bobs up and down
+	
 	var water = new createjs.Shape();
 	water.graphics.beginFill("#2275d3").drawRect(0, 0, 600, 300);
 	water.x = 0;
 	water.y = 300;
 	fishingStage.addChild(water);
 	fishingStage.update();
+	
+	bobberBobble(bobber);
 
 
 }
@@ -333,16 +331,27 @@ function steadyBobber(bobber){
 	//Get our bobber instance and pass in loop: 
 	//loop: -1 will make our animation run indefinitely
 	//give it a number for the loop
+	
 createjs.Tween.get(bobber, { loop: 2 })
 
 .to({ y: 325 }, 500, createjs.Ease.getPowInOut(2))//bob down
 .to({ y: 300 }, 500, createjs.Ease.getPowInOut(2));//bob up
-	
+	//set the FPS (how many times you want the stage to refresh per second)
+createjs.Ticker.setFPS(60);
+	//add an event listener to that same Ticker class that will actually cause the stage refresh each time a tick is caught
+createjs.Ticker.addEventListener("tick", fishingStage);
+
 
 }
 
-function bobberBobble(){
+function bobberBobble(bobber){
 
+createjs.Tween.get(bobber, { loop: 5 })
+
+.to({ y: 325 }, 100, createjs.Ease.getPowInOut(2))//bob down
+.to({ y: 300 }, 100, createjs.Ease.getPowInOut(2));//bob up
+
+	
 
 
 }
