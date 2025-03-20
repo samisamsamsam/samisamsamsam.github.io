@@ -94,11 +94,12 @@ function readAuthUrl(){
 		const authCodeURL = url.substring(startIndex + 5, endIndex);
 		const divElementOne = document.getElementById("StartGame"); 
 		const divElementTwo = document.getElementById("AuthContPage"); 
+			divElementOne.style.display = "none"; // hide first page
+			divElementTwo.style.display = "block"; // show second page
+		
 		const cVerifier ="TYTQ6GEfJ59fixjpMcc_XnqwgyV-XgeDvdQWp84kNhA"; // temporary solution for saving codeVerifier
 	//	const codeChallenge = btoa(cVerifier);
 		const codeChallenge = generateCodeChallenge(cVerifier);
-		divElementOne.style.display = "none"; // hide first page
-		divElementTwo.style.display = "block"; // show second page
 
 		const clID = "23Q4C5"; //client ID
 		const clSecret = "504e970943a9428ef0e3e0de71a37ae5"; //cient secret
@@ -110,9 +111,7 @@ function readAuthUrl(){
 		
 	}
 	else{
-		
-	// authFitBit();
-		
+				
 	}
 
 }
@@ -248,7 +247,12 @@ async function connectToBluetoothDevice(){
    //alert("here");
 	//discover bluetooth services after connection
 		device.gatt.connect().then(server => {
+		const divElementOne = document.getElementById("StartGame"); 
+		const divElementTwo = document.getElementById("AuthContPage"); 
+			divElementOne.style.display = "none"; // hide first page
+			divElementTwo.style.display = "block"; // show second page
 			alert("Successfully connected to "+device.name);
+			
 		})
 		.catch(error => {
 		alert("Error connecting", error);
@@ -283,21 +287,36 @@ async function connectToBluetoothDevice(){
 <br><br><br><br><br><br>
 
 <div id="StartGame">
-<div class="row">
+	<div class="row">
  	 <div class="col-sm-4"></div>
      <div class="col-sm-4">
          <div style="text-align:center;">
 		
 		 <button type="button" class="btn btn-success form-control" onclick="authFitBit();">
-		 Start
+		 Fitbit
+		</button>
+		
+         </div>
+	 </div>
+	 <div class="col-sm-4"></div>
+	</div>	 
+	 <br><br><br><br><br><br>
+	 <div class="row">
+ 	 <div class="col-sm-4"></div>
+     <div class="col-sm-4">
+         <div style="text-align:center;">
+		
+		<button type="button" class="btn btn-success form-control" onclick="connectToBluetoothDevice();">
+		 Other
 		</button>
          </div>
 	 </div>
 	 <div class="col-sm-4"></div>
-</div>                    
+	</div>                    
 
  
 </div>
+
 <!-- Second page after bluetooth connection
 	-->
 <div id="AuthContPage" style="display:none">
