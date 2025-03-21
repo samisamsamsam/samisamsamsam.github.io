@@ -323,7 +323,7 @@ function bobberCreate(){
 	numLoop = Math.floor(Math.random() * 10);
 	randomBobNumber = Math.floor(Math.random() * 20);
 	
-	createjs.Tween.get(bobber, { loop: randomBobNumber })
+	createjs.Tween.get(bobber, { loop: 5 })
 	.to({ y: 325 }, 500, createjs.Ease.getPowInOut(2))
 	.to({ y: 300 }, 500, createjs.Ease.getPowInOut(2));
 	
@@ -332,7 +332,6 @@ function bobberCreate(){
 	
 	bobber
 	.addEventListener('complete', function(){
-	
 	numLoop = Math.floor(Math.random() * 20);
 	randomBobNumber = Math.floor(Math.random() * 20);
 	alert("made it to the bobber movement on complete");
@@ -353,20 +352,20 @@ function bobberCreate(){
 
 	});
 	
+	
+	
+	fishingStage.update();
+	
 }
 	
 	
 function bobberBobbing(event) {
      // Actions carried out each tick (aka frame)
-	 alert("hello");
-     if (!event.paused) {
-		var randomBobNumber = Math.floor(Math.random() * 10);
-	
-		createjs.Tween.get(bobber, { loop: randomBobNumber })
+	//every second
+		createjs.Tween.get(bobber, { loop: 1 })
 		.to({ y: 325 }, 500, createjs.Ease.getPowInOut(2))
 		.to({ y: 300 }, 500, createjs.Ease.getPowInOut(2));
-     }
-	 alert("is it bobbing?");
+   
  }
 
 
