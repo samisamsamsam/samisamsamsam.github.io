@@ -325,14 +325,37 @@ function bobberCreate(){
 	
 	createjs.Ticker.framerate = 60;
 	//add an event listener to that same Ticker class that will actually cause the stage refresh each time a tick is caught
-	createjs.Ticker.addEventListener("tick", handleFishTicker());
+	createjs.Ticker.addEventListener("tick", handleFishTicker(bobber,fishingStage));
 	
-	animationFishing(bobber);
+	//animationFishing(bobber);
 	
 	
 }
 
-function handleFishTicker(){
+function handleFishTicker(bobber,fishingStage){
+	
+	var numLooper = Math.floor(Math.random() * 10);
+	alert(numLooper);
+	let randomBobNumber = Math.floor(Math.random() * 20);
+
+		//randomBobNumber = Math.floor(Math.random() * 5);
+		//numLooper = Math.floor(Math.random() * 10);
+		if(numLooper == 1){
+			bobberBobble(fBobber,randomBobNumber);
+		}
+		else if(numLooper == 2){
+			//fish Bite
+			alert("fish bite");
+		}
+		else if(numLooper == 2){
+			//fish nibble
+			alert("fish nibble");
+		}
+		else{
+			steadyBobber(fBobber,randomBobNumber);//bobber bobs up and down
+		}
+	
+	
 	fishingStage.update();
 	
 }
