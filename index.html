@@ -383,7 +383,7 @@ function animationFishing(fBobber,fishingStage){
 		else{
 			steadyBobber(fBobber,randomBobNumber);//bobber bobs up and down
 		}
-	fishingStage.update();
+	
 	}
 	
 	
@@ -399,7 +399,7 @@ function steadyBobber(fishBobber,randBobNum){
 	//loop: -1 will make our animation run indefinitely
 	//give it a number for the loop
 	
-createjs.Tween.get(fishBobber, { loop: randBobNum })
+createjs.Tween.get(fishBobber, { loop: randBobNum }, {override:true})
 
 .to({ y: 325 }, 500, createjs.Ease.getPowInOut(2))//bob down
 .to({ y: 300 }, 500, createjs.Ease.getPowInOut(2));//bob up
@@ -409,7 +409,7 @@ alert("end steady bob");
 
 function bobberBobble(fishBobber,randBobNum){
 
-createjs.Tween.get(fishBobber, { loop: randBobNum })
+createjs.Tween.get(fishBobber, { loop: randBobNum }, {override:true})
 
 .to({ y: 325 }, 100, createjs.Ease.getPowInOut(2))//bob down
 .to({ y: 300 }, 100, createjs.Ease.getPowInOut(2));//bob up
