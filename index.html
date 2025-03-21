@@ -334,8 +334,8 @@ function bobberCreate(){
 		else if(numLoop == 2){
 			randomBobNumber = Math.floor(Math.random() * 5);
 			createjs.Tween.get(bobber, { loop: 1 }, null, true)
-			.to({ y: 325 }, 700, createjs.Ease.getPowInOut(2))
-			.to({ y: 300 }, 700, createjs.Ease.getPowInOut(2)).addEventListener("complete",bobberBobRate);
+			.to({ y: 325 }, 300, createjs.Ease.getPowInOut(2))
+			.to({ y: 300 }, 300, createjs.Ease.getPowInOut(2)).addEventListener("complete",bobberBobRate);
 		
 		}
 		//bite
@@ -362,7 +362,7 @@ function bobberCreate(){
 }
 
 function fishBite(){
-	alert("bite fishBite");
+	alert("bite");
 
 }
 
@@ -417,6 +417,25 @@ function fishBite(){
          <div style="text-align:center;">
 			
 			    <canvas id="fishingCanvas" width="600" height="600" style="border:1px solid #000000;"></canvas>
+			
+         </div>
+		 
+				
+		</div>	
+			
+	 
+	 <div class="col-sm-4"></div>
+</div>                    
+
+
+</div>
+<div id="CaughtFishPage" style="display:none">
+<div class="row">
+ 	 <div class="col-sm-4"></div>
+     <div class="col-sm-4">
+         <div style="text-align:center;">
+			
+			    <canvas id="caughtFishCanvas" width="600" height="600" style="border:1px solid #000000;"></canvas>
 			
          </div>
 		 
