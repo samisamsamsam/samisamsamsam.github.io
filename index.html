@@ -325,11 +325,14 @@ function bobberCreate(){
 	
 	var fishingBob = createjs.Tween.get(bobber, { loop: randomBobNumber })
 	.to({ y: 325 }, 500, createjs.Ease.getPowInOut(2))
-	.to({ y: 300 }, 500, createjs.Ease.getPowInOut(2));
+	.to({ y: 300 }, 500, createjs.Ease.getPowInOut(2)).start();
 	
-	fishingBob.addEventListener('complete', fishingBobberMovement(fishingBob,randomBobNumber,numLoop));
+	//fishingBob.addEventListener('complete', fishingBobberMovement(fishingBob,randomBobNumber,numLoop));
+	fishingBob.addEventListener('complete', function(){
+	fishingBobberMovement(fishingBob,randomBobNumber,numLoop);
+	});
 
-	fishingBob.start();
+	
 	
 	
 	//createjs.Ticker.framerate = 5;
