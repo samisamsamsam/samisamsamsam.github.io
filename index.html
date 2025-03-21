@@ -323,9 +323,10 @@ function bobberCreate(){
 	function bobberBobRate(){
 		alert("added function");
 		randomBobNumber = Math.floor(Math.random() * 5);
-		createjs.Tween.get(bobber, { loop: randomBobNumber })
+		
+		createjs.Tween.get(bobber, { loop: randomBobNumber }, null, true)
 		.to({ y: 325 }, 500, createjs.Ease.getPowInOut(2))
-		.to({ y: 300 }, 500, createjs.Ease.getPowInOut(2)).update();
+		.to({ y: 300 }, 500, createjs.Ease.getPowInOut(2));
 		
 		alert("update worked");
 		
@@ -347,7 +348,7 @@ function bobberCreate(){
 	
 	
 	}
-	createjs.Tween.get(bobber, { loop: randomBobNumber })
+	createjs.Tween.get(bobber, { loop: randomBobNumber }, null, true)
 	.to({ y: 325 }, 500, createjs.Ease.getPowInOut(2))
 	.to({ y: 300 }, 500, createjs.Ease.getPowInOut(2)).addEventListener("complete",bobberBobRate);
 	
