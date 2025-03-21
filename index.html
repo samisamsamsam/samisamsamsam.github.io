@@ -323,7 +323,7 @@ function bobberCreate(){
 	
 	
 	
-	createjs.Ticker.framerate = 60;
+	createjs.Ticker.framerate = 5;
 	//add an event listener to that same Ticker class that will actually cause the stage refresh each time a tick is caught
 	createjs.Ticker.addEventListener("tick", handleFishTicker(bobber,fishingStage));
 	
@@ -332,7 +332,7 @@ function bobberCreate(){
 	
 }
 
-function handleFishTicker(fBobber,fishingStage){
+function handleFishTicker(fobber,fishingStage){
 	
 	var numLooper = Math.floor(Math.random() * 10);
 	alert(numLooper);
