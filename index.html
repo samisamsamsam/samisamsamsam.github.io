@@ -408,7 +408,7 @@ function steadyBobber(fishBobber,randBobNum){
 createjs.Tween.get(fishBobber, { loop: randBobNum }, {override:true})
 .to({ y: 325 }, 500, createjs.Ease.getPowInOut(2))//bob down
 .to({ y: 300 }, 500, createjs.Ease.getPowInOut(2))//bob up
-.call(handlefishTicker(fishBobber));
+.call(handleFishTicker(fishBobber));
 //alert("end steady bob");
 	
 }
@@ -419,7 +419,7 @@ createjs.Tween.get(fishBobber, { loop: randBobNum }, {override:true})
 
 .to({ y: 325 }, 100, createjs.Ease.getPowInOut(2))//bob down
 .to({ y: 300 }, 100, createjs.Ease.getPowInOut(2))//bob up
-.call(handlefishTicker(fishBobber));
+.call(handleFishTicker(fishBobber));
 }
 
 function fishNibble(){
