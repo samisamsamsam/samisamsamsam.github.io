@@ -324,7 +324,9 @@ function bobberCreate(){
 
 	createjs.Tween.get(bobber, { loop: 5 })
 	.to({ y: 325 }, 500, createjs.Ease.getPowInOut(2))
-	.to({ y: 300 }, 500, createjs.Ease.getPowInOut(2)).addEventListener("complete",loopIsDone);
+	.to({ y: 300 }, 500, createjs.Ease.getPowInOut(2)).addEventListener("complete",function(){
+	alert("complete");
+	});
 	
 	
 	createjs.Ticker.addEventListener("tick", fishingStage);
@@ -332,7 +334,7 @@ function bobberCreate(){
 	
 }
 
-function loopIsDone(){
+function changeBobberBob(){
 			alert("hit complete");
 }
 
