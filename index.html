@@ -327,7 +327,7 @@ function bobberCreate(){
 	//animationFishing(bobber,fishingStage);
 	//var numLoop = Math.floor(Math.random() * 10);
 	var randomBobNumber = Math.floor(Math.random() * 20);
-	createjs.Tween.get(fishingBob, { loop: randBobNum }, {override:true})
+	createjs.Tween.get(fishingBob, { loop: randomBobNumber }, {override:true})
 .to({ y: 325 }, 500, createjs.Ease.getPowInOut(2))//bob down
 .to({ y: 300 }, 500, createjs.Ease.getPowInOut(2))//bob up
 .call(fishingBobberMovement(fishingBob,randomBobNumber)).start();
