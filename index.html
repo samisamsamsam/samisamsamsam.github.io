@@ -216,7 +216,7 @@ function getHeartRate(accessToken){
 			success: function(responseData, textStatus, jqXHR) {
 			bobberBobbing();
 			const divElementOne = document.getElementById("StartGame"); 
-			const divElementTwo = document.getElementById("AuthContPage"); 
+			const divElementTwo = document.getElementById("FishingPage"); 
 			divElementOne.style.display = "none"; // hide first page
 			divElementTwo.style.display = "block"; // show second page
 				alert(JSON.stringify(responseData));
@@ -266,7 +266,7 @@ async function connectToBluetoothDevice(){
 		device.gatt.connect().then(server => {
 			bobberBobbing();
 			const divElementOne = document.getElementById("StartGame"); 
-			const divElementTwo = document.getElementById("AuthContPage"); 
+			const divElementTwo = document.getElementById("FishingPage"); 
 			divElementOne.style.display = "none"; // hide first page
 			divElementTwo.style.display = "block"; // show second page
 			alert("Successfully connected to "+device.name);
@@ -327,45 +327,67 @@ function bobberBobbing(){
 	//add an event listener to that same Ticker class that will actually cause the stage refresh each time a tick is caught
 	createjs.Ticker.addEventListener("tick", fishingStage);
 	
-	animationFishing(bobber,fishingStage);
+	animationFishing(bobber);
 	
 	
 }
 
 
-function animationFishing(bobber,fishingStage){
-steadyBobber(bobber,fishingStage);//bobber bobs up and down
+function animationFishing(fBobber)
+	var numLooper = Math.floor(Math.random() * 10);
+	alert(numLooper);
+	let randomBobNumber = Math.floor(Math.random() * 10);
+	
+	let startTime = Date.now();
+	let maxDuration = 5000; // Maximum duration in milliseconds
+	while (Date.now() - startTime < maxDuration){
+		randomBobNumber = Math.floor(Math.random() * 5);
+		numLooper = Math.floor(Math.random() * 10);
+		if(numLooper == 1){
+			bobberBobble(fBobber,randomBobNumber);
+		}
+		else if(numLooper == 2){
+		
+		}
+		else if(numLooper == 3){
+		
+		}
+		else{
+			steadyBobber(fBobber,randomBobNumber);//bobber bobs up and down
+		}
 
-//bobberBobble(bobber,fishingStage);
-
+	}
+	const divElementOne = document.getElementById("FishingPage"); 
+	const divElementTwo = document.getElementById("MaxTimeReached"); 
+	divElementOne.style.display = "none"; // hide fishing page
+	divElementTwo.style.display = "block"; // show timeout
+	
 }
 
 
 
 
 
-function steadyBobber(bobber,fishingStage){
+function steadyBobber(fishBobber,randBobNum){
 
 	//Get our bobber instance and pass in loop: 
 	//loop: -1 will make our animation run indefinitely
 	//give it a number for the loop
 	
-createjs.Tween.get(bobber, { loop: 2 })
+createjs.Tween.get(fishBobber, { loop: randBobNum })
 
 .to({ y: 325 }, 500, createjs.Ease.getPowInOut(2))//bob down
 .to({ y: 300 }, 500, createjs.Ease.getPowInOut(2));//bob up
+alert("end steady bob");
 	
-
 }
 
-function bobberBobble(bobber,fishingStage){
+function bobberBobble(fishBobber,randBobNum){
 
-createjs.Tween.get(bobber, { loop: 5 })
+createjs.Tween.get(fishBobber, { loop: randBobNum })
 
 .to({ y: 325 }, 100, createjs.Ease.getPowInOut(2))//bob down
 .to({ y: 300 }, 100, createjs.Ease.getPowInOut(2));//bob up
-
-
 
 }
 
@@ -423,7 +445,7 @@ function reelInFish(){
 
 <!-- Second page after bluetooth connection
 	-->
-<div id="AuthContPage" style="display:none">
+<div id="FishingPage" style="display:none">
 <div class="row">
  	 <div class="col-sm-4"></div>
      <div class="col-sm-4">
@@ -431,6 +453,26 @@ function reelInFish(){
 			
 			    <canvas id="fishingCanvas" width="600" height="600" style="border:1px solid #000000;"></canvas>
 			
+         </div>
+		 
+				
+		</div>	
+			
+	 
+	 <div class="col-sm-4"></div>
+</div>                    
+
+
+</div>
+
+<!----Errror--->
+<div id="MaxTimeReached" style="display:none">
+<div class="row">
+ 	 <div class="col-sm-4"></div>
+     <div class="col-sm-4">
+         <div style="text-align:center;">
+			The max time has been reached.
+			  
          </div>
 		 
 				
