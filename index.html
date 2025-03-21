@@ -302,6 +302,10 @@ function bobberCreate(){
 	divElementOne.style.display = "none"; // hide first page
 	divElementTwo.style.display = "block"; // show second page
 
+
+
+
+
 	var fishingStage = new createjs.Stage("fishingCanvas");
 	
 
@@ -324,15 +328,16 @@ function bobberCreate(){
 	//add an event listener to that same Ticker class that will actually cause the stage refresh each time a tick is caught
 	//createjs.Ticker.addEventListener("tick", handleFishTicker(bobber,fishingStage));
 	
-	animationFishing(bobber,fishingStage);
+	//animationFishing(bobber,fishingStage);
+	handleFishTicker(bobber);
 	
 	
 }
 
-function handleFishTicker(fBobber,fishingStage){
-	
+function handleFishTicker(fBobber){
+	alert("new bob loop");
 	var numLooper = Math.floor(Math.random() * 10);
-	alert(numLooper);
+	//alert(numLooper);
 	let randomBobNumber = Math.floor(Math.random() * 20);
 
 		//randomBobNumber = Math.floor(Math.random() * 5);
@@ -353,9 +358,10 @@ function handleFishTicker(fBobber,fishingStage){
 		}
 	
 	
-	fishingStage.update();
+	//fishingStage.update();
 	
 }
+
 
 
 function animationFishing(fBobber,fishingStage){
@@ -400,10 +406,10 @@ function steadyBobber(fishBobber,randBobNum){
 	//give it a number for the loop
 	
 createjs.Tween.get(fishBobber, { loop: randBobNum }, {override:true})
-
 .to({ y: 325 }, 500, createjs.Ease.getPowInOut(2))//bob down
-.to({ y: 300 }, 500, createjs.Ease.getPowInOut(2));//bob up
-alert("end steady bob");
+.to({ y: 300 }, 500, createjs.Ease.getPowInOut(2))//bob up
+.call(handleCompleteBob);
+//alert("end steady bob");
 	
 }
 
@@ -412,8 +418,8 @@ function bobberBobble(fishBobber,randBobNum){
 createjs.Tween.get(fishBobber, { loop: randBobNum }, {override:true})
 
 .to({ y: 325 }, 100, createjs.Ease.getPowInOut(2))//bob down
-.to({ y: 300 }, 100, createjs.Ease.getPowInOut(2));//bob up
-
+.to({ y: 300 }, 100, createjs.Ease.getPowInOut(2))//bob up
+.call(handlefishTicker(fishBobber));
 }
 
 function fishNibble(){
