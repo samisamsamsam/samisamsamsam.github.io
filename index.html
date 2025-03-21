@@ -336,31 +336,31 @@ function bobberBobbing(){
 function animationFishing(fBobber)
 	var numLooper = Math.floor(Math.random() * 10);
 	alert(numLooper);
-	let randomBobNumber = Math.floor(Math.random() * 10);
+	let randomBobNumber = Math.floor(Math.random() * 20);
 	
-	let startTime = Date.now();
-	let maxDuration = 5000; // Maximum duration in milliseconds
-	while (Date.now() - startTime < maxDuration){
+	while (randomBobNumber < 100){
+	
+	
 		randomBobNumber = Math.floor(Math.random() * 5);
 		numLooper = Math.floor(Math.random() * 10);
 		if(numLooper == 1){
 			bobberBobble(fBobber,randomBobNumber);
 		}
 		else if(numLooper == 2){
-		
+			//fish Bite
+			alert("fish bite");
+			break;
 		}
-		else if(numLooper == 3){
-		
+		else if(numLooper == 2){
+			//fish nibble
+			alert("fish nibble");
 		}
 		else{
 			steadyBobber(fBobber,randomBobNumber);//bobber bobs up and down
 		}
 
 	}
-	const divElementOne = document.getElementById("FishingPage"); 
-	const divElementTwo = document.getElementById("MaxTimeReached"); 
-	divElementOne.style.display = "none"; // hide fishing page
-	divElementTwo.style.display = "block"; // show timeout
+	
 	
 }
 
@@ -465,25 +465,7 @@ function reelInFish(){
 
 </div>
 
-<!----Errror--->
-<div id="MaxTimeReached" style="display:none">
-<div class="row">
- 	 <div class="col-sm-4"></div>
-     <div class="col-sm-4">
-         <div style="text-align:center;">
-			The max time has been reached.
-			  
-         </div>
-		 
-				
-		</div>	
-			
-	 
-	 <div class="col-sm-4"></div>
-</div>                    
 
-
-</div>
 
 
 
