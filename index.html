@@ -328,31 +328,26 @@ function bobberCreate(){
 	.to({ y: 300 }, 500, createjs.Ease.getPowInOut(2))
 	.addEventListener('complete', function(){
 	
-	numLooper = Math.floor(Math.random() * 20);
-	randomBobNum = Math.floor(Math.random() * 20);
+	numLoop = Math.floor(Math.random() * 20);
+	randomBobNumber = Math.floor(Math.random() * 20);
 	alert("made it to the bobber movement on complete");
 		if(numLooper == 1){
-		//	bobberBobble(fishBobber,randomBobNum,numLooper);
+
 		}
-		else if(numLooper == 2){
-			//fish Bite
-		//	alert("fish bite");
+		else if(numLoop == 2){
+		
 		}
-		else if(numLooper == 2){
-			//fish nibble
-		//	alert("fish nibble");
+		else if(numLoop == 2){
+
 		}
 		else{
-		//	steadyBobber(fishBobber,randomBobNum,numLooper);//bobber bobs up and down
+		
 		}
 	
 
 	
-	
-	
 	fishingStage.update();
 	});
-	
 	
 	
 	fishingStage.update();
