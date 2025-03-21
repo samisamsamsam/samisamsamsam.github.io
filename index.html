@@ -303,7 +303,7 @@ function bobberCreate(){
 	divElementTwo.style.display = "block"; // show second page
 
 	var fishingStage = new createjs.Stage("fishingCanvas");
-	
+	var fishingBob, numLoop, randomBobNumber;
 
 	var bobber = new createjs.Shape();
 	bobber.graphics.beginFill("#df2e1d").drawCircle(0, 0, 50);
@@ -320,37 +320,16 @@ function bobberCreate(){
 	
 	
 	
-		var numLoop = Math.floor(Math.random() * 10);
-		var randomBobNumber = Math.floor(Math.random() * 20);
+	numLoop = Math.floor(Math.random() * 10);
+	randomBobNumber = Math.floor(Math.random() * 20);
 	
-	var fishingBob = createjs.Tween.get(bobber, { loop: randomBobNumber })
+	fishingBob = createjs.Tween.get(bobber, { loop: randomBobNumber })
 	.to({ y: 325 }, 500, createjs.Ease.getPowInOut(2))
-	.to({ y: 300 }, 500, createjs.Ease.getPowInOut(2)).start();
-	
-	//fishingBob.addEventListener('complete', fishingBobberMovement(fishingBob,randomBobNumber,numLoop));
-	fishingBob.addEventListener('complete', function(){
+	.to({ y: 300 }, 500, createjs.Ease.getPowInOut(2))
+	.addEventListener('complete', function(){
 	fishingBobberMovement(fishingBob,randomBobNumber,numLoop);
 	});
 
-	
-	
-	
-	//createjs.Ticker.framerate = 5;
-	//add an event listener to that same Ticker class that will actually cause the stage refresh each time a tick is caught
-	//createjs.Ticker.addEventListener("tick", handleFishTicker(bobber,fishingStage));
-	
-	//animationFishing(bobber,fishingStage);
-	
-	//fishingBob.onUpdate(fishingBobberMovement(fishingBob,randomBobNumber,numLoop));
-
-	//fishingBobberMovement(fishingBob,randomBobNumber,numLoop);
-	
-	
-//	createjs.Tween.get(fishingBob, { loop: randomBobNumber }, {override:true})
-//.to({ y: 325 }, 500, createjs.Ease.getPowInOut(2))//bob down
-//.to({ y: 300 }, 500, createjs.Ease.getPowInOut(2))//bob up
-//.call(fishingBobberMovement(fishingBob,randomBobNumber,numLoop));
-//fishingBob.update();
 	
 }
 
