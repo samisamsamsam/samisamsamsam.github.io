@@ -320,78 +320,21 @@ function bobberCreate(){
 
 	numLoop = Math.floor(Math.random() * 10);
 	randomBobNumber = Math.floor(Math.random() * 20);
-	//, { loop: -1 }
 	
-	alert("bobber with no loop");
-	createjs.Tween.get(bobber)
+
+	alert("bobber with infinite loop");
+	createjs.Tween.get(bobber, { loop: 5 })
 	.to({ y: 325 }, 500, createjs.Ease.getPowInOut(2))
-	.to({ y: 300 }, 500, createjs.Ease.getPowInOut(2));
+	.to({ y: 300 }, 500, createjs.Ease.getPowInOut(2))
+	.call(bobComplete);
 	
 	createjs.Ticker.addEventListener("tick", fishingStage);
-
-	
-//	bobber
-//	.addEventListener('complete', function(){
-//	numLoop = Math.floor(Math.random() * 20);
-//	randomBobNumber = Math.floor(Math.random() * 20);
-//	alert("made it to the bobber movement on complete");
-//		if(numLooper == 1){
-
-//		}
-//	else if(numLoop == 2){
-		
-//		}
-//		else if(numLoop == 2){
-
-//		}
-//		else{
-		
-//		}
-		
-//		fishingStage.update();
-
-//	});
-	
 	
 	
 }
-	
 
-
-
-
-
-function steadyBobber(fishBobber,randBobNum,nLoop){
-	
-createjs.Tween.get(fishBobber, { loop: randBobNum }, {override:true})
-.to({ y: 325 }, 500, createjs.Ease.getPowInOut(2))//bob down
-.to({ y: 300 }, 500, createjs.Ease.getPowInOut(2))//bob up
-.call(fishingBobberMovement(fishBobber,randBobNum,nLoop));
-fishBobber.update();
-//alert("end steady bob");
-	
-}
-
-function bobberBobble(fishBobber,randBobNum,nLoop){
-
-createjs.Tween.get(fishBobber, { loop: randBobNum }, {override:true})
-.to({ y: 325 }, 100, createjs.Ease.getPowInOut(2))//bob down
-.to({ y: 300 }, 100, createjs.Ease.getPowInOut(2))//bob up
-.call(fishingBobberMovement(fishBobber,randBobNum,nLoop));
-fishBobber.update();
-}
-
-function fishNibble(){
-
-}
-
-
-function fishBite(){
-
-}
-
-function reelInFish(){
-
+function bobComplete(){
+	alert("loop is done");
 }
 
 </script>
@@ -399,7 +342,7 @@ function reelInFish(){
 </head>
 
 
-<body onload ="bobberCreate()">
+<body onload ="readAuthUrl()">
 <!-- onload ="readAuthUrl()"> -->
 <!--bobberCreate()-->
 
