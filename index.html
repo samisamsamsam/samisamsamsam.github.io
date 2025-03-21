@@ -302,10 +302,6 @@ function bobberCreate(){
 	divElementOne.style.display = "none"; // hide first page
 	divElementTwo.style.display = "block"; // show second page
 
-
-
-
-
 	var fishingStage = new createjs.Stage("fishingCanvas");
 	
 
@@ -322,28 +318,33 @@ function bobberCreate(){
 	fishingStage.addChild(water);
 	fishingStage.update();
 	
-	
+	var fishingBob = createjs.Tween.get(bobber);
 	
 	//createjs.Ticker.framerate = 5;
 	//add an event listener to that same Ticker class that will actually cause the stage refresh each time a tick is caught
 	//createjs.Ticker.addEventListener("tick", handleFishTicker(bobber,fishingStage));
 	
 	//animationFishing(bobber,fishingStage);
-	handleFishTicker(bobber);
-	
+	//var numLoop = Math.floor(Math.random() * 10);
+	var randomBobNumber = Math.floor(Math.random() * 20);
+	var fishingBobber = createjs.Tween.get(fishingBob, { loop: randBobNum }, {override:true})
+.to({ y: 325 }, 500, createjs.Ease.getPowInOut(2))//bob down
+.to({ y: 300 }, 500, createjs.Ease.getPowInOut(2))//bob up
+.call(fishingBobberMovement(fishingBobber,randomBobNumber));
+	fishingBobber.start();
 	
 }
 
-function handleFishTicker(fBobber){
-	alert("new bob loop");
-	var numLooper = Math.floor(Math.random() * 10);
+function fishingBobberMovement(fishBobber,randomBobNum){
+	//alert("new bob loop");
+	//numLooper = Math.floor(Math.random() * 10);
 	//alert(numLooper);
-	let randomBobNumber = Math.floor(Math.random() * 20);
+	randomBobNum = Math.floor(Math.random() * 20);
 
 		//randomBobNumber = Math.floor(Math.random() * 5);
 		//numLooper = Math.floor(Math.random() * 10);
 		if(numLooper == 1){
-			bobberBobble(fBobber,randomBobNumber);
+			bobberBobble(fishBobber,randomBobNum);
 		}
 		else if(numLooper == 2){
 			//fish Bite
@@ -354,7 +355,7 @@ function handleFishTicker(fBobber){
 			alert("fish nibble");
 		}
 		else{
-			steadyBobber(fBobber,randomBobNumber);//bobber bobs up and down
+			steadyBobber(fishBobber,randomBobNum);//bobber bobs up and down
 		}
 	
 	
@@ -364,36 +365,35 @@ function handleFishTicker(fBobber){
 
 
 
-function animationFishing(fBobber,fishingStage){
-	var numLooper = Math.floor(Math.random() * 10);
-	alert(numLooper);
-	let randomBobNumber = Math.floor(Math.random() * 20);
+//function animationFishing(fBobber,fishingStage){
+//	var numLooper = Math.floor(Math.random() * 10);
+//	alert(numLooper);
+//	let randomBobNumber = Math.floor(Math.random() * 20);
 	
-	while (randomBobNumber < 100){
+//	while (randomBobNumber < 100){
 	
 	
-		randomBobNumber = Math.floor(Math.random() * 5);
-		numLooper = Math.floor(Math.random() * 10);
-		if(numLooper == 1){
-			bobberBobble(fBobber,randomBobNumber);
-		}
-		else if(numLooper == 2){
-			//fish Bite
-			alert("fish bite");
-			break;
-		}
-		else if(numLooper == 2){
+	//	randomBobNumber = Math.floor(Math.random() * 5);
+	//	numLooper = Math.floor(Math.random() * 10);
+	//	if(numLooper == 1){
+	//		bobberBobble(fBobber,randomBobNumber);
+	//	}
+	//	else if(numLooper == 2){
+	//		alert("fish bite");
+	//		break;
+	//	}
+	//	else if(numLooper == 2){
 			//fish nibble
-			alert("fish nibble");
-		}
-		else{
-			steadyBobber(fBobber,randomBobNumber);//bobber bobs up and down
-		}
+	//		alert("fish nibble");
+	//}
+	//	else{
+	//		steadyBobber(fBobber,randomBobNumber);//bobber bobs up and down
+	//	}
 	
-	}
+	//}
 	
 	
-}
+//}
 
 
 
@@ -408,7 +408,8 @@ function steadyBobber(fishBobber,randBobNum){
 createjs.Tween.get(fishBobber, { loop: randBobNum }, {override:true})
 .to({ y: 325 }, 500, createjs.Ease.getPowInOut(2))//bob down
 .to({ y: 300 }, 500, createjs.Ease.getPowInOut(2))//bob up
-.call(handleFishTicker(fishBobber));
+.call(fishingBobberMovement(fishBobber,randBobNum);
+fishBobber.start();
 //alert("end steady bob");
 	
 }
@@ -419,7 +420,8 @@ createjs.Tween.get(fishBobber, { loop: randBobNum }, {override:true})
 
 .to({ y: 325 }, 100, createjs.Ease.getPowInOut(2))//bob down
 .to({ y: 300 }, 100, createjs.Ease.getPowInOut(2))//bob up
-.call(handleFishTicker(fishBobber));
+.call(fishingBobberMovement(fishBobber,randBobNum);
+fishBobber.start();
 }
 
 function fishNibble(){
