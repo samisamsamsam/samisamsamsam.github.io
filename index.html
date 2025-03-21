@@ -214,12 +214,12 @@ function getHeartRate(accessToken){
 			headers: { 'Authorization': headerBearer },
 			dataType: 'json',
 			success: function(responseData, textStatus, jqXHR) {
-			bobberBobbing();
 			const divElementOne = document.getElementById("StartGame"); 
 			const divElementTwo = document.getElementById("FishingPage"); 
 			divElementOne.style.display = "none"; // hide first page
 			divElementTwo.style.display = "block"; // show second page
 				alert(JSON.stringify(responseData));
+				bobberCreate(); //create bobber
 			},
 			error: function (responseData, textStatus, errorThrown) {
 			alert(JSON.stringify(responseData));
@@ -264,12 +264,12 @@ async function connectToBluetoothDevice(){
    //alert("here");
 	//discover bluetooth services after connection
 		device.gatt.connect().then(server => {
-			bobberBobbing();
 			const divElementOne = document.getElementById("StartGame"); 
 			const divElementTwo = document.getElementById("FishingPage"); 
 			divElementOne.style.display = "none"; // hide first page
 			divElementTwo.style.display = "block"; // show second page
 			alert("Successfully connected to "+device.name);
+			bobberCreate();
 			
 		})
 		.catch(error => {
@@ -302,7 +302,7 @@ async function connectToBluetoothDevice(){
 
 //-----------------------------------------------------------------------------------
 
-function bobberBobbing(){
+function bobberCreate(){
 
 
 	var fishingStage = new createjs.Stage("fishingCanvas");
