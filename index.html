@@ -322,20 +322,20 @@ function bobberCreate(){
 	randomBobNumber = Math.floor(Math.random() * 20);
 	
 
-	alert("bobber with infinite loop");
 	createjs.Tween.get(bobber, { loop: 5 })
 	.to({ y: 325 }, 500, createjs.Ease.getPowInOut(2))
 	.to({ y: 300 }, 500, createjs.Ease.getPowInOut(2))
-	.call(bobComplete);
+	.onComplete(function () {
+	
+		alert("loop is done");
+	
+	});
 	
 	createjs.Ticker.addEventListener("tick", fishingStage);
 	
 	
 }
 
-function bobComplete(){
-	alert("loop is done");
-}
 
 </script>
 
