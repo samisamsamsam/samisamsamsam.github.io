@@ -318,40 +318,54 @@ function bobberCreate(){
 	fishingStage.addChild(water);
 	fishingStage.update();
 	
-	var fishingBob = createjs.Tween.get(bobber);
+	
+	
+		var numLoop = Math.floor(Math.random() * 10);
+		var randomBobNumber = Math.floor(Math.random() * 20);
+	
+	var fishingBob = createjs.Tween.get(bobber, { loop: randomBobNumber })
+	.to({ y: 325 }, 500, createjs.Ease.getPowInOut(2))
+	.to({ y: 300 }, 500, createjs.Ease.getPowInOut(2))
+	.onComplete(fishingBobberMovement(fishingBob,randomBobNumber,numLoop))
+	.start();
+	
 	
 	//createjs.Ticker.framerate = 5;
 	//add an event listener to that same Ticker class that will actually cause the stage refresh each time a tick is caught
 	//createjs.Ticker.addEventListener("tick", handleFishTicker(bobber,fishingStage));
 	
 	//animationFishing(bobber,fishingStage);
-	var numLoop = Math.floor(Math.random() * 10);
-	var randomBobNumber = Math.floor(Math.random() * 20);
-	fishingBob.start();
-	createjs.Tween.get(fishingBob, { loop: randomBobNumber }, {override:true})
-.to({ y: 325 }, 500, createjs.Ease.getPowInOut(2))//bob down
-.to({ y: 300 }, 500, createjs.Ease.getPowInOut(2))//bob up
-.call(fishingBobberMovement(fishingBob,randomBobNumber,numLoop));
-fishingBob.start();
+	
+	//fishingBob.onUpdate(fishingBobberMovement(fishingBob,randomBobNumber,numLoop));
+
+	//fishingBobberMovement(fishingBob,randomBobNumber,numLoop);
+	
+	
+//	createjs.Tween.get(fishingBob, { loop: randomBobNumber }, {override:true})
+//.to({ y: 325 }, 500, createjs.Ease.getPowInOut(2))//bob down
+//.to({ y: 300 }, 500, createjs.Ease.getPowInOut(2))//bob up
+//.call(fishingBobberMovement(fishingBob,randomBobNumber,numLoop));
+//fishingBob.update();
 	
 }
 
 function fishingBobberMovement(fishBobber,randomBobNum,numLooper){
 	numLooper = Math.floor(Math.random() * 20);
 	randomBobNum = Math.floor(Math.random() * 20);
+	alert("made it to the bobber movement on complete");
 		if(numLooper == 1){
-			bobberBobble(fishBobber,randomBobNum,numLooper);
+		//	bobberBobble(fishBobber,randomBobNum,numLooper);
 		}
 		else if(numLooper == 2){
 			//fish Bite
-			alert("fish bite");
+		//	alert("fish bite");
 		}
 		else if(numLooper == 2){
 			//fish nibble
-			alert("fish nibble");
+		//	alert("fish nibble");
 		}
 		else{
-			steadyBobber(fishBobber,randomBobNum,numLooper);//bobber bobs up and down
+		//	steadyBobber(fishBobber,randomBobNum,numLooper);//bobber bobs up and down
 		}
 	
 
@@ -367,11 +381,12 @@ function steadyBobber(fishBobber,randBobNum,nLoop){
 	//loop: -1 will make our animation run indefinitely
 	//give it a number for the loop
 	
-createjs.Tween.get(fishBobber, { loop: randBobNum }, {override:true})
-.to({ y: 325 }, 500, createjs.Ease.getPowInOut(2))//bob down
-.to({ y: 300 }, 500, createjs.Ease.getPowInOut(2))//bob up
-.call(fishingBobberMovement(fishBobber,randBobNum,nLoop));
-fishBobber.start();
+	
+//createjs.Tween.get(fishBobber, { loop: randBobNum }, {override:true})
+//.to({ y: 325 }, 500, createjs.Ease.getPowInOut(2))//bob down
+//.to({ y: 300 }, 500, createjs.Ease.getPowInOut(2))//bob up
+//.call(fishingBobberMovement(fishBobber,randBobNum,nLoop));
+//fishBobber.update();
 //alert("end steady bob");
 	
 }
@@ -382,7 +397,7 @@ createjs.Tween.get(fishBobber, { loop: randBobNum }, {override:true})
 .to({ y: 325 }, 100, createjs.Ease.getPowInOut(2))//bob down
 .to({ y: 300 }, 100, createjs.Ease.getPowInOut(2))//bob up
 .call(fishingBobberMovement(fishBobber,randBobNum,nLoop));
-fishBobber.start();
+fishBobber.update();
 }
 
 function fishNibble(){
