@@ -317,26 +317,18 @@ function bobberCreate(){
 	water.y = 300;
 	fishingStage.addChild(water);
 	fishingStage.update();
-	
-	
-	
+
 	numLoop = Math.floor(Math.random() * 10);
 	randomBobNumber = Math.floor(Math.random() * 20);
 	//, { loop: -1 }
+	
+	alert("bobber with no loop");
 	createjs.Tween.get(bobber)
 	.to({ y: 325 }, 500, createjs.Ease.getPowInOut(2))
 	.to({ y: 300 }, 500, createjs.Ease.getPowInOut(2));
 	
-	//createjs.Ticker.addEventListener("tick", fishingStage);
-	alert("update function with stage");
-	createjs.Ticker.addEventListener("tick", function(){
-	createjs.Tween.get(bobber)
-	.to({ y: 325 }, 500, createjs.Ease.getPowInOut(2))
-	.to({ y: 300 }, 500, createjs.Ease.getPowInOut(2));
-	fishingStage.update();
-	});
-	
-	
+	createjs.Ticker.addEventListener("tick", fishingStage);
+
 	
 //	bobber
 //	.addEventListener('complete', function(){
@@ -407,7 +399,10 @@ function reelInFish(){
 </head>
 
 
-<body onload ="readAuthUrl()">
+<body onload ="bobberCreate()">
+<!-- onload ="readAuthUrl()"> -->
+<!--bobberCreate()-->
+
 <br><br><br><br><br><br>
 
 <div id="StartGame">
