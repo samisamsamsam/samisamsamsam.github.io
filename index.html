@@ -323,12 +323,12 @@ function bobberCreate(){
 	function bobberBobRate(){
 		
 		randomBobNumber = Math.floor(Math.random() * 5);
-		alert(randomBobNumber);
+		
 		createjs.Tween.get(bobber, { loop: randomBobNumber }, null, true)
-		.to({ y: 325 }, 500, createjs.Ease.getPowInOut(2))
-		.to({ y: 300 }, 500, createjs.Ease.getPowInOut(2)).addEventListener("complete",bobberBobRate);
+		.to({ y: 325 }, 200, createjs.Ease.getPowInOut(2))
+		.to({ y: 300 }, 200, createjs.Ease.getPowInOut(2)).addEventListener("complete",bobberBobRate);
 	
-		alert("added event listener");
+		alert("update rate");
 		if(numLoop == 1){
 	
 		
