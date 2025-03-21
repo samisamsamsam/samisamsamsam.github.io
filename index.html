@@ -321,9 +321,16 @@ function bobberCreate(){
 	numLoop = Math.floor(Math.random() * 3);
 	randomBobNumber = Math.floor(Math.random() * 5);
 	function bobberBobRate(){
-		alert("added override true and function");
-		if(numLoop == 1){
+		alert("added function");
+		randomBobNumber = Math.floor(Math.random() * 5);
+		createjs.Tween.get(bobber, { loop: randomBobNumber })
+		.to({ y: 325 }, 500, createjs.Ease.getPowInOut(2))
+		.to({ y: 300 }, 500, createjs.Ease.getPowInOut(2)).update();
 		
+		alert("update worked");
+		
+		if(numLoop == 1){
+	
 		
 		
 		}
