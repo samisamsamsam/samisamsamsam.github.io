@@ -320,12 +320,8 @@ function bobberCreate(){
 
 	numLoop = Math.floor(Math.random() * 3);
 	randomBobNumber = Math.floor(Math.random() * 5);
-	
-	
-	createjs.Tween.get(bobber, { loop: randomBobNumber, override:true })
-	.to({ y: 325 }, 500, createjs.Ease.getPowInOut(2))
-	.to({ y: 300 }, 500, createjs.Ease.getPowInOut(2)).addEventListener("complete",function(){
-		alert("added override true");
+	function bobberBobRate(){
+		alert("added override true and function");
 		if(numLoop == 1){
 		
 		
@@ -340,9 +336,13 @@ function bobberCreate(){
 		
 		
 		}
+		
 	
 	
-	});
+	}
+	createjs.Tween.get(bobber, { loop: randomBobNumber, override:true })
+	.to({ y: 325 }, 500, createjs.Ease.getPowInOut(2))
+	.to({ y: 300 }, 500, createjs.Ease.getPowInOut(2)).addEventListener("complete",bobberBobRate);
 	
 	
 	createjs.Ticker.addEventListener("tick", fishingStage);
