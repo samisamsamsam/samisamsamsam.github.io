@@ -318,14 +318,30 @@ function bobberCreate(){
 	fishingStage.addChild(water);
 	fishingStage.update();
 
-	numLoop = Math.floor(Math.random() * 10);
-	randomBobNumber = Math.floor(Math.random() * 20);
+	numLoop = Math.floor(Math.random() * 3);
+	randomBobNumber = Math.floor(Math.random() * 5);
 	
-
-	createjs.Tween.get(bobber, { loop: 5 })
+	
+	createjs.Tween.get(bobber, { loop: randomBobNumber, override:true })
 	.to({ y: 325 }, 500, createjs.Ease.getPowInOut(2))
 	.to({ y: 300 }, 500, createjs.Ease.getPowInOut(2)).addEventListener("complete",function(){
-	alert("complete");
+		alert("added override true");
+		if(numLoop == 1){
+		
+		
+		
+		}
+		else if(numLoop == 2){
+		
+		
+		}
+		else{
+		
+		
+		
+		}
+	
+	
 	});
 	
 	
@@ -334,9 +350,7 @@ function bobberCreate(){
 	
 }
 
-function changeBobberBob(){
-			alert("hit complete");
-}
+
 
 </script>
 
