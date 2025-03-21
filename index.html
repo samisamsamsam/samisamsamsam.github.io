@@ -327,11 +327,11 @@ function bobberCreate(){
 	.to({ y: 325 }, 500, createjs.Ease.getPowInOut(2))
 	.to({ y: 300 }, 500, createjs.Ease.getPowInOut(2));
 	
-	createjs.Ticker.addEventListener("tick", fishingStage);
+	//createjs.Ticker.addEventListener("tick", fishingStage);
 	
+	createjs.Ticker.addEventListener("tick", bobberBobbing);
 	
-	
-	
+	}
 	//.addEventListener('complete', function(){
 	
 	//numLoop = Math.floor(Math.random() * 20);
@@ -356,7 +356,18 @@ function bobberCreate(){
 	//});
 	
 	
-}
+function bobberBobbing(event) {
+     // Actions carried out each tick (aka frame)
+	 alert("hello");
+     if (!event.paused) {
+		var randomBobNumber = Math.floor(Math.random() * 10);
+	
+		createjs.Tween.get(bobber, { loop: randomBobNumber })
+		.to({ y: 325 }, 500, createjs.Ease.getPowInOut(2))
+		.to({ y: 300 }, 500, createjs.Ease.getPowInOut(2));
+     }
+	 alert("is it bobbing?");
+ }
 
 
 
