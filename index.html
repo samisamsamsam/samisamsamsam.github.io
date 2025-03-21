@@ -327,8 +327,16 @@ function bobberCreate(){
 	.to({ y: 325 }, 500, createjs.Ease.getPowInOut(2))
 	.to({ y: 300 }, 500, createjs.Ease.getPowInOut(2));
 	
-	createjs.Ticker.addEventListener("tick", bobberBobbing);
-	alert("updated ticker");
+	//createjs.Ticker.addEventListener("tick", fishingStage);
+	alert("update function");
+	createjs.Ticker.addEventListener("tick", function(){
+	bobber
+	.to({ y: 325 }, 500, createjs.Ease.getPowInOut(2))
+	.to({ y: 300 }, 500, createjs.Ease.getPowInOut(2));
+	
+	});
+	
+	
 	
 //	bobber
 //	.addEventListener('complete', function(){
@@ -354,20 +362,8 @@ function bobberCreate(){
 	
 	
 	
-	fishingStage.update();
-	
 }
 	
-	
-function bobberBobbing(event) {
-     // Actions carried out each tick (aka frame)
-	//every second
-		createjs.Tween.get(bobber, { loop: 1 })
-		.to({ y: 325 }, 500, createjs.Ease.getPowInOut(2))
-		.to({ y: 300 }, 500, createjs.Ease.getPowInOut(2));
-   
- }
-
 
 
 
