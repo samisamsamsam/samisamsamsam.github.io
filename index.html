@@ -328,12 +328,12 @@ function bobberCreate(){
 	.to({ y: 300 }, 500, createjs.Ease.getPowInOut(2));
 	
 	//createjs.Ticker.addEventListener("tick", fishingStage);
-	alert("update function");
+	alert("update function with stage");
 	createjs.Ticker.addEventListener("tick", function(){
-	bobber
+	createjs.Tween.get(bobber)
 	.to({ y: 325 }, 500, createjs.Ease.getPowInOut(2))
 	.to({ y: 300 }, 500, createjs.Ease.getPowInOut(2));
-	
+	fishingStage.update();
 	});
 	
 	
