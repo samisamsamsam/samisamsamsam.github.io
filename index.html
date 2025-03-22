@@ -325,13 +325,13 @@ function bobberCreate(){
 	//caught fish creation
 	//var fishCaught = new createjs.Shape();
 	
-	alert("Using 2d canvas");
+	alert("Using 2d canvas changing units");
 	var canvasDefine = document.getElementById("caughtFishCanvas"); 
 	var canvasFishCaught = canvasDefine.getContext("2d");
 	
 	canvasFishCaught.beginPath();
 	canvasFishCaught.moveTo(0, 300);
-	canvasFishCaught.bezierCurveTo(230,30,150,80,250,100);
+	canvasFishCaught.bezierCurveTo(120,50,180,80,300,300);
 	canvasFishCaught.stroke();
 	
 	
