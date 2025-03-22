@@ -326,8 +326,8 @@ function bobberCreate(){
 	var fishCaught = new createjs.Shape();
 	fishCaught.graphics.setStrokeStyle(1);
 	fishCaught.graphics.beginStroke("#F00");
-	alert("updated again");
-	//fishCaught.bezierCurveTo(200,200,200,200,200,500,600);
+	alert("hello my update");
+	fishCaught.graphics.bezierCurveTo(200,200,200,200,200,500,600);
 	//fishCaught.quadraticCurveTo(100,100,100,100);
 	reelCatchStage.addChild(fishCaught);
 	reelCatchStage.update();
@@ -360,7 +360,7 @@ function bobberCreate(){
 			alert("bite");
 			createjs.Tween.get(bobber, null, true)
 			.to({ y: 600 }, 1000, createjs.Ease.getPowInOut(2))
-			.to({ y: 300 }, 1000, createjs.Ease.getPowInOut(2)).addEventListener("complete",fishBite);
+			.addEventListener("complete",fishBite);
 		
 		}
 		
