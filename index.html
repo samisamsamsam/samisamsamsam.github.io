@@ -303,7 +303,7 @@ function bobberCreate(){
 	divElementTwo.style.display = "block"; // show second page
 
 	var fishingStage = new createjs.Stage("fishingCanvas");
-	var reelCatchStage = new createjs.Stage("caughtFishCanvas");
+	//var reelCatchStage = new createjs.Stage("caughtFishCanvas");
 	
 	var numLoop, randomBobNumber;
 
@@ -323,19 +323,26 @@ function bobberCreate(){
 	fishingStage.update();
 	
 	//caught fish creation
-	var fishCaught = new createjs.Shape();
-	alert("added the stage name in begin path");
+	//var fishCaught = new createjs.Shape();
 	
-	reelCatchStage.addChild(fishCaught);
-	reelCatchStage.update();
-	fishCaught.graphics.setStrokeStyle(1);
-	fishCaught.graphics.BeginPath(reelCatchStage);
+	alert("Using 2d canvas");
+	var canvasDefine = document.getElementById("caughtFishCanvas"); 
+	var canvasFishCaught = canvasDefine.getContext("2d");
+	
+	canvasFishCaught.beginPath();
+	canvasFishCaught.moveTo(0, 300);
+	canvasFishCaught.bezierCurveTo(230,30,150,80,250,100);
+	canvasFishCaught.stroke();
 	
 	
-	fishCaught.graphics.quadraticCurveTo(230,30,50,100);
+	//reelCatchStage.addChild(fishCaught);
+	//reelCatchStage.update();
 	
-	reelCatchStage.update();
-	
+	//fishCaught.graphics.setStrokeStyle(1);
+	//fishCaught.graphics.quadraticCurveTo(230,30,50,100);
+
+
+//-------------------------------------------
 
 	numLoop = Math.floor(Math.random() * 3);
 	randomBobNumber = Math.floor(Math.random() * 5);
