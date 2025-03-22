@@ -374,7 +374,7 @@ function bobberCreate(){
 	createjs.Ticker.addEventListener("tick", fishingStage);
 	
 	function fishBite(){
-		
+		createjs.Ticker.addEventListener("tick", reelCatchStage);
 		const divElementOne = document.getElementById("FishingPage"); 
 		const divElementTwo = document.getElementById("CaughtFishPage"); 
 		divElementOne.style.display = "none"; // hide second page
