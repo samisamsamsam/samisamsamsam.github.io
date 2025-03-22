@@ -324,11 +324,9 @@ function bobberCreate(){
 	
 	//caught fish creation
 	var fishCaught = new createjs.Shape();
-	fishCaught.x = 0;
-	fishCaught.y = 300;
 	fishCaught.graphics.beginPath();
 	fishCaught.moveTo(20,200);
-	alert("hello quadcurveto with stroke update");
+	alert("hello quadcurve wihtout defining x and y before");
 	fishCaught.graphics.quadraticCurveTo(230,30,50,100);
 	fishCaught.graphics.stroke();
 
