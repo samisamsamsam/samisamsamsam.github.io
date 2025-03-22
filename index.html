@@ -368,7 +368,7 @@ function bobberCreate(){
 		}
 		//bite
 		else{
-			alert("bite");
+			
 			createjs.Tween.get(bobber, null, true)
 			.to({ y: 600 }, 1000, createjs.Ease.getPowInOut(2))
 			.addEventListener("complete",fishBite);
