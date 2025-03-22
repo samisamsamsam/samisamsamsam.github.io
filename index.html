@@ -303,8 +303,12 @@ function bobberCreate(){
 	divElementTwo.style.display = "block"; // show second page
 
 	var fishingStage = new createjs.Stage("fishingCanvas");
-	var fishingBob, numLoop, randomBobNumber;
+	var reelCatchStage = new createjs.Stage("caughtFishCanvas");
+	
+	var numLoop, randomBobNumber;
 
+
+	//fishing bobber and water creation
 	var bobber = new createjs.Shape();
 	bobber.graphics.beginFill("#df2e1d").drawCircle(0, 0, 50);
 	bobber.x = 300;
@@ -317,6 +321,15 @@ function bobberCreate(){
 	water.y = 300;
 	fishingStage.addChild(water);
 	fishingStage.update();
+	
+	//caught fish creation
+	var fishCaught = new createjs.Shape();
+	//fishCaught.graphics.
+	
+	
+	
+	
+	
 
 	numLoop = Math.floor(Math.random() * 3);
 	randomBobNumber = Math.floor(Math.random() * 5);
@@ -333,7 +346,7 @@ function bobberCreate(){
 		//nibble
 		else if(numLoop == 2){
 			randomBobNumber = Math.floor(Math.random() * 5);
-			createjs.Tween.get(bobber, { loop: 1 }, null, true)
+			createjs.Tween.get(bobber, { loop: randomBobNumber }, null, true)
 			.to({ y: 325 }, 300, createjs.Ease.getPowInOut(2))
 			.to({ y: 300 }, 300, createjs.Ease.getPowInOut(2)).addEventListener("complete",bobberBobRate);
 		
@@ -358,13 +371,14 @@ function bobberCreate(){
 	
 	createjs.Ticker.addEventListener("tick", fishingStage);
 	
+	function fishBite(){
+	
+		alert("bite");
+	}
 	
 }
 
-function fishBite(){
-	alert("bite");
 
-}
 
 </script>
 
