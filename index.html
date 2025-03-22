@@ -324,7 +324,9 @@ function bobberCreate(){
 	
 	//caught fish creation
 	var fishCaught = new createjs.Shape();
-	fishCaught.graphics.bezierCurveTo(200,200,200,200,200,150,150);
+	fishCaught.graphics.beginPath();
+	fishCaught.graphics.moveTo(100,100);
+	fishCaught.graphics.bezierCurveTo(200,200,200,200,200,500,600);
 	reelCatchStage.addChild(fishCaught);
 	reelCatchStage.update();
 	
