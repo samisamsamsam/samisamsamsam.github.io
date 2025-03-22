@@ -324,9 +324,9 @@ function bobberCreate(){
 	
 	//caught fish creation
 	var fishCaught = new createjs.Shape();
-	//fishCaught.graphics.
-	
-	
+	fishCaught.graphics.bezierCurveTo(200,200,200,200,200,150,150);
+	reelCatchStage.addChild(fishCaught);
+	reelCatchStage.update();
 	
 	
 	
@@ -353,7 +353,7 @@ function bobberCreate(){
 		}
 		//bite
 		else{
-
+			alert("bite");
 			createjs.Tween.get(bobber, null, true)
 			.to({ y: 600 }, 1000, createjs.Ease.getPowInOut(2))
 			.to({ y: 300 }, 1000, createjs.Ease.getPowInOut(2)).addEventListener("complete",fishBite);
@@ -372,8 +372,12 @@ function bobberCreate(){
 	createjs.Ticker.addEventListener("tick", fishingStage);
 	
 	function fishBite(){
-	
-		alert("bite");
+		
+		const divElementOne = document.getElementById("FishingPage"); 
+		const divElementTwo = document.getElementById("CaughtFishPage"); 
+		divElementOne.style.display = "none"; // hide second page
+		divElementTwo.style.display = "block"; // show third page
+		
 	}
 	
 }
