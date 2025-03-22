@@ -328,9 +328,9 @@ function bobberCreate(){
 	fishCaught.graphics.beginStroke("#F00");
 	fishCaught.x = 0;
 	fishCaught.y = 300;
-	alert("hello curveto");
-	fishCaught.graphics.curveTo(100,100,500,500);
-	//fishCaught.quadraticCurveTo(100,100,100,100);
+	alert("hello quadcurveto");
+	fishCaught.graphics.quadraticCurveTo(230,30,50,100);
+
 	reelCatchStage.addChild(fishCaught);
 	reelCatchStage.update();
 	
