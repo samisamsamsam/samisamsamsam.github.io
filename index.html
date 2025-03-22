@@ -326,8 +326,10 @@ function bobberCreate(){
 	var fishCaught = new createjs.Shape();
 	fishCaught.graphics.setStrokeStyle(1);
 	fishCaught.graphics.beginStroke("#F00");
+	fishCaught.x = 0;
+	fishCaught.y = 300;
 	alert("hello my update");
-	fishCaught.graphics.bezierCurveTo(200,200,200,200,200,500,600);
+	fishCaught.graphics.bezierCurveTo(100,100,200,200,200,500,100);
 	//fishCaught.quadraticCurveTo(100,100,100,100);
 	reelCatchStage.addChild(fishCaught);
 	reelCatchStage.update();
@@ -337,6 +339,8 @@ function bobberCreate(){
 
 	numLoop = Math.floor(Math.random() * 3);
 	randomBobNumber = Math.floor(Math.random() * 5);
+	
+	//changing the bobber rate after testing complete
 	function bobberBobRate(){
 		numLoop = Math.floor(Math.random() * 3);
 		//calm bobbing
