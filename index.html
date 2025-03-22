@@ -324,12 +324,13 @@ function bobberCreate(){
 	
 	//caught fish creation
 	var fishCaught = new createjs.Shape();
-	fishCaught.graphics.setStrokeStyle(1);
-	fishCaught.graphics.beginStroke("#F00");
 	fishCaught.x = 0;
 	fishCaught.y = 300;
-	alert("hello quadcurveto");
+	fishCaught.graphics.beginPath();
+	fishCaught.moveTo(20,200);
+	alert("hello quadcurveto with stroke update");
 	fishCaught.graphics.quadraticCurveTo(230,30,50,100);
+	fishCaught.graphics.stroke();
 
 	reelCatchStage.addChild(fishCaught);
 	reelCatchStage.update();
