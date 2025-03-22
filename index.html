@@ -323,7 +323,7 @@ function bobberCreate(){
 	fishingStage.update();
 	
 	//caught fish creation
-	var fishCaught = new createjs.Shape();
+	var fishCaught = new createjs.Graphics();
 	
 	
 	fishCaught.graphics.bezierCurveTo(200,200,200,200,200,500,600);
@@ -374,7 +374,7 @@ function bobberCreate(){
 	createjs.Ticker.addEventListener("tick", fishingStage);
 	
 	function fishBite(){
-		createjs.Ticker.addEventListener("tick", reelCatchStage);
+		
 		const divElementOne = document.getElementById("FishingPage"); 
 		const divElementTwo = document.getElementById("CaughtFishPage"); 
 		divElementOne.style.display = "none"; // hide second page
