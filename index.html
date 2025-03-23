@@ -378,8 +378,9 @@ function bobberCreate(){
 	
 	function fishBite(){
 		canvasFishCaught.beginPath();
-		canvasFishCaught.moveTo(100, 200);
-		canvasFishCaught.bezierCurveTo(100,10,300,500,500,250);
+		canvasFishCaught.moveTo(100, 300);
+		alert("100,100,300,500,500,250");
+		canvasFishCaught.bezierCurveTo(100,100,300,500,500,250);
 		canvasFishCaught.lineTo(500,500);
 		//canvasFishCaught.bezierCurveTo(100,400,300,500,100,300);
 		canvasFishCaught.stroke();
