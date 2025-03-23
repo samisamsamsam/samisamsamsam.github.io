@@ -329,19 +329,7 @@ function bobberCreate(){
 	var canvasDefine = document.getElementById("caughtFishCanvas"); 
 	var canvasFishCaught = canvasDefine.getContext("2d");
 	
-	canvasFishCaught.beginPath();
-	canvasFishCaught.moveTo(100, 300);
-	canvasFishCaught.bezierCurveTo(100,200,300,500,500,250);
-	canvasFishCaught.lineTo(500,500);
-	//canvasFishCaught.bezierCurveTo(100,400,300,500,100,300);
-	canvasFishCaught.stroke();
 	
-	
-	//reelCatchStage.addChild(fishCaught);
-	//reelCatchStage.update();
-	
-	//fishCaught.graphics.setStrokeStyle(1);
-	//fishCaught.graphics.quadraticCurveTo(230,30,50,100);
 
 
 //-------------------------------------------
@@ -389,7 +377,12 @@ function bobberCreate(){
 	createjs.Ticker.addEventListener("tick", fishingStage);
 	
 	function fishBite(){
-		
+		canvasFishCaught.beginPath();
+		canvasFishCaught.moveTo(100, 300);
+		canvasFishCaught.bezierCurveTo(100,200,300,500,500,250);
+		canvasFishCaught.lineTo(500,500);
+		canvasFishCaught.bezierCurveTo(100,400,300,500,100,300);
+		canvasFishCaught.stroke();
 		const divElementOne = document.getElementById("FishingPage"); 
 		const divElementTwo = document.getElementById("CaughtFishPage"); 
 		divElementOne.style.display = "none"; // hide second page
